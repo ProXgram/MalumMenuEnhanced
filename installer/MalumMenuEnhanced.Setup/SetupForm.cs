@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using MalumMenuEnhanced.Setup.Core;
+using MalumMenuEnhanced.Updates;
 
 namespace MalumMenuEnhanced.Setup;
 
@@ -25,11 +26,12 @@ internal sealed class SetupForm : Form
     private bool finished;
     private string lastError = "";
 
-    internal static readonly SetupCatalog Catalog = new("1.0",
+    internal static readonly SetupCatalog Catalog = new("1.1.0",
         new DownloadArtifact(new Uri("https://builds.bepinex.dev/projects/bepinex_be/755/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755%2B3fab71a.zip"),
             "3616D6A67F5F595973EC4AA7BD7EDAF7F799D5BB9926F7146A6DCC7B4ABF478F", "BepInEx loader"),
-        new DownloadArtifact(new Uri("https://raw.githubusercontent.com/ProXgram/MalumMenuEnhanced/88bdfd5c1ae74f92933b375adb19e5f309895da5/downloads/v1.0/MalumMenuEnhanced-1.0-Plugin.zip"),
-            "227F8D82300F5F89D30C49BEEB4E83C152C072D07BAC5400B194D0D6FBB6B8C1", "MalumMenu Enhanced"));
+        new DownloadArtifact(new Uri("https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhanced-1.1.0-Plugin.zip"),
+            "FE21E267091344AFB6AFFD6ECCD4E26785440E9F52708643FC6AAE3ADDEB99AE", "MalumMenu Enhanced"))
+        { ExpectedPluginVersion = new Version(1, 1, 0, 0) };
 
     public SetupForm()
     {
@@ -53,7 +55,7 @@ internal sealed class SetupForm : Form
         var logo = new Label { Text = "M", Font = new Font("Segoe UI", 25, FontStyle.Bold), TextAlign = ContentAlignment.MiddleCenter, ForeColor = Background, BackColor = Accent, Location = Point.Empty, Size = new Size(49, 49) };
         header.Controls.Add(logo);
         header.Controls.Add(TextLabel("MalumMenu Enhanced", 17, FontStyle.Bold, new Point(63, 0), new Size(450, 30)));
-        header.Controls.Add(TextLabel("By Rifegul  ·  Mod version 1.0", 10, FontStyle.Regular, new Point(65, 32), new Size(450, 24), Muted));
+        header.Controls.Add(TextLabel($"By Rifegul  ·  Mod version {Catalog.ModVersion}", 10, FontStyle.Regular, new Point(65, 32), new Size(450, 24), Muted));
         layout.Controls.Add(header, 0, 0);
 
         var introduction = new Panel { Dock = DockStyle.Fill };
@@ -81,7 +83,7 @@ internal sealed class SetupForm : Form
 
         var activity = new Panel { Dock = DockStyle.Fill };
         status.SetBounds(0, 4, 670, 46);
-        status.Text = "Downloads the mod and everything it needs.\nYour settings and other mods are kept.";
+        status.Text = "Downloads the mod and enables compatible automatic updates.\nYour settings and other mods are kept.";
         status.ForeColor = Muted;
         activity.Controls.Add(status);
         progress.SetBounds(0, 61, 678, 9);
@@ -203,13 +205,15 @@ internal sealed class SetupForm : Form
         try
         {
             using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
-            var service = new InstallerService(Catalog, http);
+            status.Text = "Checking for a compatible mod release…";
+            var selectedCatalog = await ResolveCatalogAsync(directory, http, cancellation.Token);
+            var service = new InstallerService(selectedCatalog, http);
             await Task.Run(() => service.InstallAsync(directory, reporter, cancellation.Token));
             finished = true;
             progress.Value = 100;
             status.ForeColor = Accent;
             status.Text = "Installed! Open Among Us normally.\nPress Delete to open MalumMenu Enhanced.";
-            locationHint.Text = "Version 1.0 is ready. Your settings are preserved.";
+            locationHint.Text = $"Version {selectedCatalog.ModVersion} is ready. Your settings are preserved.";
             locationHint.ForeColor = Accent;
             install.Text = "Reinstall";
         }
@@ -234,6 +238,40 @@ internal sealed class SetupForm : Form
             cancellation.Dispose();
             cancellation = null;
         }
+    }
+
+    private static async Task<SetupCatalog> ResolveCatalogAsync(string directory, HttpClient http, CancellationToken ct)
+    {
+        var gameVersion = InstallerService.GetGameVersion(directory);
+        var selected = Catalog;
+        try
+        {
+            using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            timeout.CancelAfter(TimeSpan.FromSeconds(15));
+            using var response = await http.GetAsync(UpdateTrust.ManifestUrl, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+            response.EnsureSuccessStatusCode();
+            if (response.Content.Headers.ContentLength > UpdateManifestVerifier.MaximumEnvelopeBytes)
+                throw new InvalidDataException("The update information is larger than expected.");
+            using var input = await response.Content.ReadAsStreamAsync(timeout.Token);
+            using var output = new MemoryStream();
+            var buffer = new byte[4096];
+            int count;
+            while ((count = await input.ReadAsync(buffer, timeout.Token)) > 0)
+            {
+                if (output.Length + count > UpdateManifestVerifier.MaximumEnvelopeBytes)
+                    throw new InvalidDataException("The update information is larger than expected.");
+                output.Write(buffer, 0, count);
+            }
+            var manifest = new UpdateManifestVerifier(UpdateTrust.PublicKeyPem).Verify(output.ToArray());
+            if (manifest.SupportsGameVersion(gameVersion) && manifest.IsNewerThan(Catalog.ModVersion))
+                selected = AutoUpdateService.CreateCatalog(manifest, Catalog.Loader);
+        }
+        catch (HttpRequestException) { /* The built-in verified release remains available. */ }
+        catch (OperationCanceledException) when (!ct.IsCancellationRequested) { }
+        var current = Path.Combine(directory, "BepInEx", "plugins", "MalumMenuEnhanced.dll");
+        if (File.Exists(current) && InstallerService.GetInstalledModVersion(directory) > UpdateManifestVerifier.ParseNumericVersion(selected.ModVersion))
+            throw new InvalidOperationException("A newer mod is already installed. Download the latest setup before replacing it.");
+        return selected;
     }
 
     private void SetBusy(bool value)

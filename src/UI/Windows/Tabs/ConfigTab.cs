@@ -42,5 +42,12 @@ public class ConfigTab : ITab
         GUILayout.Label("Your edition by " + ModBranding.Creator);
         GUILayout.Label(ModBranding.Attribution);
         GUILayout.Label("Original authors: " + ModBranding.OriginalAuthors);
+
+        GUILayout.Space(18f);
+        GUILayout.Label("Mod updates", GUIStylePreset.TabSubtitle);
+        if (MalumMenu.automaticUpdates != null)
+            MalumMenu.automaticUpdates.Value = GUILayout.Toggle(MalumMenu.automaticUpdates.Value, " Automatic updates (next launch)");
+        GUILayout.Label(MalumMenuEnhanced.Updates.AutomaticUpdateHandler.Status);
+        GUILayout.Label("Compatible updates install after you close Among Us.");
     }
 }

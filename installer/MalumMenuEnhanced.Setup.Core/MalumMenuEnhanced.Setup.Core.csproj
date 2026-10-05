@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>MalumMenuEnhanced.Setup.Core</AssemblyName>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Rifegul</Authors>
     <Company>Rifegul</Company>
     <DebugType>none</DebugType>
@@ -14,5 +14,8 @@
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Setup.Core.Tests" />
+    <InternalsVisibleTo Include="AutoUpdate.Tests" />
+    <Compile Include="../../src/Updates/UpdateManifest.cs" Link="Updates/UpdateManifest.cs" />
+    <Compile Include="../../src/Updates/UpdateTrust.cs" Link="Updates/UpdateTrust.cs" />
   </ItemGroup>
 </Project>

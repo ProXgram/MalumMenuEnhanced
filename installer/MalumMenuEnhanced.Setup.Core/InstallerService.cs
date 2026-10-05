@@ -11,8 +11,15 @@ using Microsoft.Win32;
 
 namespace MalumMenuEnhanced.Setup.Core;
 
-public sealed record DownloadArtifact(Uri Url, string Sha256, string Name);
-public sealed record SetupCatalog(string ModVersion, DownloadArtifact Loader, DownloadArtifact Plugin);
+public sealed record DownloadArtifact(Uri Url, string Sha256, string Name)
+{
+    public long? ExpectedSize { get; init; }
+}
+public sealed record SetupCatalog(string ModVersion, DownloadArtifact Loader, DownloadArtifact Plugin)
+{
+    public Version? ExpectedPluginVersion { get; init; }
+    public Version? ExpectedInstalledModVersion { get; init; }
+}
 public enum GameArchitecture { X86, X64 }
 public sealed record InstallProgress(string Message, int Percent);
 public sealed record InstallResult(string GameDirectory, string BackupDirectory, bool LoaderInstalled);
@@ -75,6 +82,9 @@ public sealed class InstallerService
                 pluginFiles.Any(f => !expectedPluginFiles.Contains(f)))
                 throw new InvalidDataException("The mod download does not have the expected files. Please download setup again.");
             RequireAssembly(SafePaths.Under(Path.Combine(stage, "plugin"), PluginRelative), "MalumMenuEnhanced", null);
+            if (_catalog.ExpectedPluginVersion != null &&
+                ReadModVersion(SafePaths.Under(Path.Combine(stage, "plugin"), PluginRelative)) != _catalog.ExpectedPluginVersion)
+                throw new InvalidDataException("The mod download's version does not match the signed update.");
 
             progress?.Report(new("Downloading and checking the verified game loader", 30));
             var loaderZip = await DownloadAsync(_catalog.Loader, stage, "loader.zip", ct);
@@ -89,6 +99,9 @@ public sealed class InstallerService
             RequireGameClosed();
             if (GetGameArchitecture(game) != architecture || CheckExistingLoader(game, architecture) != reuseLoader)
                 throw new IOException("The game folder changed while downloading. Close other installers and try again.");
+            if (_catalog.ExpectedInstalledModVersion != null &&
+                GetInstalledModVersion(game) != _catalog.ExpectedInstalledModVersion)
+                throw new IOException("The installed mod changed while downloading. This update stopped without replacing it.");
             if (reuseLoader)
             {
                 if (!MatchesVerifiedLoader(game, Path.Combine(stage, "loader"), loaderFiles))
@@ -180,6 +193,33 @@ public sealed class InstallerService
     public static GameArchitecture GetGameArchitecture(string directory)
         => ReadPeArchitecture(Path.Combine(directory, "GameAssembly.dll"))
             ?? throw new InvalidDataException("The game's native architecture could not be verified.");
+
+    /// <summary>Reads the native game's PlayerSettings; caller-supplied version text is never trusted.</summary>
+    public static string GetGameVersion(string directory)
+    {
+        var error = ValidateGameDirectory(directory);
+        if (error != null) throw new InvalidOperationException(error);
+        return ReadUnityVersion(Path.GetFullPath(directory))
+            ?? throw new InvalidDataException("The installed game's version could not be verified. Repair Among Us in your launcher.");
+    }
+
+    /// <summary>Reads assembly identity without loading or executing the installed mod.</summary>
+    public static Version GetInstalledModVersion(string directory)
+        => ReadModVersion(SafePaths.Under(Path.GetFullPath(directory), PluginRelative));
+
+    private static Version ReadModVersion(string path)
+    {
+        SafePaths.CheckAncestors(path);
+        using var input = File.OpenRead(path);
+        using var pe = new PEReader(input);
+        if (!pe.HasMetadata) throw new InvalidDataException("The installed mod has no readable assembly identity.");
+        var metadata = pe.GetMetadataReader();
+        if (!metadata.IsAssembly) throw new InvalidDataException("The installed mod is not a managed assembly.");
+        var assembly = metadata.GetAssemblyDefinition();
+        if (metadata.GetString(assembly.Name) != "MalumMenuEnhanced")
+            throw new InvalidDataException("The installed mod identity does not match MalumMenu Enhanced.");
+        return assembly.Version;
+    }
 
     private static string? ValidateGameIdentity(string folder)
     {
@@ -299,29 +339,29 @@ public sealed class InstallerService
         if (GetGameArchitecture(folder) != GameArchitecture.X64)
             return "This older 32-bit Steam build is not supported. Update Among Us in Steam to the 64-bit 2026.9.29 release, then try again.";
         // The Steam app manifest identifies the game, but does not establish its gameplay version.
-        if (!HasSupportedUnityVersion(folder))
+        if (ReadUnityVersion(folder) != "2026.9.29")
             return "This Steam Among Us version could not be verified or is not supported. Update or verify Among Us in Steam. This setup supports Among Us 2026.9.29.";
         return null;
     }
 
-    private static bool HasSupportedUnityVersion(string folder)
+    private static string? ReadUnityVersion(string folder)
     {
         var path = Path.Combine(folder, "Among Us_Data", "globalgamemanagers");
         try
         {
             SafePaths.CheckAncestors(path);
             using var stream = File.OpenRead(path);
-            if (stream.Length < 48 || stream.Length > 16 * 1024 * 1024) return false;
+            if (stream.Length < 48 || stream.Length > 16 * 1024 * 1024) return null;
             var bytes = new byte[(int)stream.Length];
             stream.ReadExactly(bytes);
-            if (stream.ReadByte() != -1 || BinaryPrimitives.ReadUInt32BigEndian(bytes.AsSpan(8, 4)) != 22 || bytes[16] != 0) return false;
+            if (stream.ReadByte() != -1 || BinaryPrimitives.ReadUInt32BigEndian(bytes.AsSpan(8, 4)) != 22 || bytes[16] != 0) return null;
             var metadataSize = BinaryPrimitives.ReadUInt32BigEndian(bytes.AsSpan(20, 4));
             var declaredSize = BinaryPrimitives.ReadInt64BigEndian(bytes.AsSpan(24, 8));
             var dataOffset = BinaryPrimitives.ReadInt64BigEndian(bytes.AsSpan(32, 8));
-            if (declaredSize != bytes.Length || dataOffset < 48 || dataOffset > bytes.Length || metadataSize > dataOffset - 48) return false;
+            if (declaredSize != bytes.Length || dataOffset < 48 || dataOffset > bytes.Length || metadataSize > dataOffset - 48) return null;
             var metadata = new UnityDataReader(bytes, 48, checked(48 + (int)metadataSize));
             // The following PlayerSettings layout is verified against this exact Unity release schema.
-            if (metadata.CString() != "2022.3.44f1" || metadata.Int32() != 19 || metadata.Byte() != 0) return false;
+            if (metadata.CString() != "2022.3.44f1" || metadata.Int32() != 19 || metadata.Byte() != 0) return null;
             var types = new int[metadata.Count(4096)];
             for (var i = 0; i < types.Length; i++)
             {
@@ -340,18 +380,18 @@ public sealed class InstallerService
                 var size = metadata.UInt32();
                 var type = metadata.Int32();
                 if (type < 0 || type >= types.Length || relative < 0 || relative > bytes.Length - dataOffset ||
-                    size > bytes.Length - dataOffset - relative) return false;
+                    size > bytes.Length - dataOffset - relative) return null;
                 if (types[type] != 129) continue;
-                if (playerSettings != null) return false;
+                if (playerSettings != null) return null;
                 playerSettings = (checked((int)(dataOffset + relative)), checked((int)size));
             }
-            if (playerSettings == null) return false;
+            if (playerSettings == null) return null;
             var settings = new UnityDataReader(bytes, playerSettings.Value.Start,
                 playerSettings.Value.Start + playerSettings.Value.Size);
             // Fixed-size blocks and variable fields come from PlayerSettings' Unity 2022.3.44f1
             // release schema: AssetRipper/TypeTreeDumps, InfoJson/2022.3.44f1.json.
             settings.Skip(36);
-            if (settings.String() != "Innersloth" || settings.String() != "Among Us") return false;
+            if (settings.String() != "Innersloth" || settings.String() != "Among Us") return null;
             settings.Skip(104);
             settings.Skip(settings.Count(256) * 16); // splash-screen logos
             settings.Align();
@@ -365,10 +405,11 @@ public sealed class InstallerService
             settings.Skip(144);
             settings.String(); // visionOSBundleVersion
             settings.String(); // tvOSBundleVersion
-            return settings.String() == "2026.9.29"; // bundleVersion, exposed by Application.version
+            var version = settings.String(); // bundleVersion, exposed by Application.version
+            return version.Length is > 0 and <= 64 && version.All(c => char.IsAsciiDigit(c) || c == '.') ? version : null;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidDataException or ArgumentException or OverflowException)
-        { return false; }
+        { return null; }
     }
 
     private sealed class UnityDataReader(byte[] data, int start, int end)
@@ -568,7 +609,8 @@ public sealed class InstallerService
     private static void ValidateArtifact(DownloadArtifact artifact)
     {
         if (artifact.Url == null || !artifact.Url.IsAbsoluteUri || artifact.Url.Scheme != Uri.UriSchemeHttps ||
-            artifact.Sha256 == null || artifact.Sha256.Length != 64 || !artifact.Sha256.All(Uri.IsHexDigit))
+            artifact.Sha256 == null || artifact.Sha256.Length != 64 || !artifact.Sha256.All(Uri.IsHexDigit) ||
+            artifact.ExpectedSize is <= 0 or > MaxDownload)
             throw new ArgumentException("The installer download information is invalid. Please download setup again.");
     }
 
@@ -578,6 +620,9 @@ public sealed class InstallerService
         if (!response.IsSuccessStatusCode) throw new IOException("The download could not be completed. Check your connection and try again.");
         if (response.Content.Headers.ContentLength > MaxDownload)
             throw new InvalidDataException("The download is larger than expected. Installation stopped safely.");
+        if (artifact.ExpectedSize != null && response.Content.Headers.ContentLength != null &&
+            artifact.ExpectedSize != response.Content.Headers.ContentLength)
+            throw new InvalidDataException("The download's size does not match the signed update.");
         var path = Path.Combine(stage, name);
         await using var input = await response.Content.ReadAsStreamAsync(ct);
         await using var output = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None, 81920, true);
@@ -588,10 +633,13 @@ public sealed class InstallerService
         while ((read = await input.ReadAsync(buffer, ct)) != 0)
         {
             size += read;
-            if (size > MaxDownload) throw new InvalidDataException("The download is larger than expected. Installation stopped safely.");
+            if (size > MaxDownload || artifact.ExpectedSize != null && size > artifact.ExpectedSize)
+                throw new InvalidDataException("The download is larger than expected. Installation stopped safely.");
             hash.AppendData(buffer, 0, read);
             await output.WriteAsync(buffer.AsMemory(0, read), ct);
         }
+        if (artifact.ExpectedSize != null && size != artifact.ExpectedSize)
+            throw new InvalidDataException("The download's size does not match the signed update.");
         if (!CryptographicOperations.FixedTimeEquals(hash.GetHashAndReset(), Convert.FromHexString(artifact.Sha256)))
             throw new InvalidDataException("The download did not pass its safety check. Nothing was installed. Please try again.");
         return path;

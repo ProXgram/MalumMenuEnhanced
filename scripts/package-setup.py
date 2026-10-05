@@ -3,14 +3,17 @@ from pathlib import Path, PurePosixPath
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--release", default="1.0", choices=("1.0", "1.0.1"), help="Release source archive version")
+parser.add_argument("--release", default="1.0", help="Release source archive version")
 args = parser.parse_args()
+if not re.fullmatch(r"[0-9]+\.[0-9]+(?:\.[0-9]+){0,2}", args.release):
+    parser.error("Use a numeric release version, for example 1.1.0.")
 published = root / "artifacts" / "setup" / "publish"
 executable = published / "MalumMenuEnhancedSetup.exe"
 if not executable.is_file():

@@ -3,6 +3,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <DebugType>embedded</DebugType>
+        <EnableSourceLink>false</EnableSourceLink>
         <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/..'))=/_/MalumMenuEnhanced</PathMap>
 
         <AssemblyName>MalumMenuEnhanced</AssemblyName>
@@ -10,7 +11,7 @@
         <Title>MalumMenu Enhanced</Title>
         <AssemblyTitle>MalumMenu Enhanced</AssemblyTitle>
         <Company>Rifegul</Company>
-        <VersionPrefix>1.0</VersionPrefix>
+        <VersionPrefix>1.1.0</VersionPrefix>
         <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
         <Description>Rifegul's enhanced Among Us 19 edition, based on MalumMenu.</Description>
         <Authors>Rifegul; scp222thj; astra1dev</Authors>

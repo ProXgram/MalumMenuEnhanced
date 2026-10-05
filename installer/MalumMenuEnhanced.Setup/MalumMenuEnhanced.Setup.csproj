@@ -10,7 +10,7 @@
     <Title>MalumMenu Enhanced Setup</Title>
     <Company>Rifegul</Company>
     <Authors>Rifegul</Authors>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <DebugType>none</DebugType>
     <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/../..'))=/_/MalumMenuEnhanced</PathMap>

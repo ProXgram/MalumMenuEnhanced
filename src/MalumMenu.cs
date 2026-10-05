@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using MalumMenuEnhanced.Updates;
 
 namespace MalumMenu;
 
@@ -68,11 +69,28 @@ public partial class MalumMenu : BasePlugin
     public static ConfigEntry<int> defaultStrength;
     public static ConfigEntry<float> defaultCooldown;
     public static ConfigEntry<int> killSwitchLvl;
+    public static ConfigEntry<bool> automaticUpdates;
 
     public override void Load()
     {
         Log = base.Log;
         Plugin = this;
+        automaticUpdates = Config.Bind("MalumMenu.Updates", "AutomaticUpdates", true,
+            "Check for signed mod updates when the game starts. A compatible update is applied after you close Among Us normally.");
+        // Capture Unity-owned values here; background update work receives only managed values.
+        var gameVersion = Application.version;
+        var gameDirectory = Paths.GameRootPath;
+        int gameProcessId;
+        using (var process = System.Diagnostics.Process.GetCurrentProcess()) gameProcessId = process.Id;
+        AutomaticUpdateHandler.Start(new UpdateStartupSnapshot(gameDirectory, gameVersion, ModBranding.Version, gameProcessId),
+            automaticUpdates.Value, message => Log?.LogInfo(message));
+        if (!supportedAU.Contains(gameVersion))
+        {
+            Log.LogWarning("This Among Us version is not supported by the installed mod. Gameplay features are paused. " +
+                (automaticUpdates.Value ? "A compatible published update can be prepared automatically; close Among Us normally to apply it."
+                    : "Automatic updates are disabled. Use the latest installer for a compatible mod release."));
+            return;
+        }
         NavigationRouter.FailureTrace = message => Log?.LogInfo("Movement route failed: " + message);
 
         // Loads config settings

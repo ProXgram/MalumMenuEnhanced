@@ -413,12 +413,16 @@ installation, back up the current `MalumMenu.dll`, `HaddadMenu.dll` or
 `BepInEx/plugins/MalumMenuEnhanced.dll` and remove the old active menu DLL.
 These filenames share the same plugin ID; keep only one active copy.
 
-The repository download is the
-[1.0 plugin package](downloads/v1.0/MalumMenuEnhanced-1.0-Plugin.zip), with its
-[matching source archive](downloads/v1.0/MalumMenuEnhanced-1.0-Source.zip).
-These repository downloads are separate from a GitHub Release; Release upload
-is pending. The plugin package contains the plugin, documentation and GPL
-license and requires a compatible BepInEx 6 IL2CPP installation.
+Current downloads are on the [release page](https://github.com/ProXgram/MalumMenuEnhanced/releases/latest).
+The complete manual ZIP includes a compatible BepInEx 6 IL2CPP loader; the
+plugin-only ZIP contains the plugin, documentation and GPL license and needs
+an existing loader. See [installation help](docs/INSTALL.md).
+
+Version **1.1.0** adds automatic compatible-release checks when the game opens.
+Verified updates wait until Among Us closes, then back up and replace the mod
+while preserving settings and unrelated plugins. **Delete → Settings** shows
+the update status and the switch for the next launch. A game update that breaks
+compatibility requires a newly tested mod build; no code repair is automatic.
 
 For a new installation, download **BepInEx 6 Unity.IL2CPP-win-x64** from the
 [official BepInEx downloads](https://builds.bepinex.dev/projects/bepinex_be).

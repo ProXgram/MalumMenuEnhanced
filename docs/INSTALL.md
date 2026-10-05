@@ -7,7 +7,7 @@ Use Among Us **19.0.0 / 2026.9.29**, Windows 10/11, 64-bit.
 
 For **Steam / Microsoft Store / Xbox App**.
 
-1. [Download the installer](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0.1/MalumMenuEnhancedSetup.exe).
+1. [Download the installer](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhancedSetup.exe).
 2. Close Among Us. Open the downloaded file and click **Install**.
 3. Open Among Us normally and press **Delete**.
 
@@ -19,8 +19,8 @@ and backs up the previous menu. No separate .NET download is needed.
 
 Choose the ZIP for your launcher:
 
-- **[Steam ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0.1/MalumMenuEnhanced-1.0-Steam.zip)**
-- **[Microsoft Store / Epic Games / Xbox App ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0.1/MalumMenuEnhanced-1.0-MicrosoftStore-EpicGames-XboxApp.zip)**
+- **[Steam ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhanced-1.1.0-Steam.zip)**
+- **[Microsoft Store / Epic Games / Xbox App ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhanced-1.1.0-MicrosoftStore-EpicGames-XboxApp.zip)**
 
 1. Download your ZIP.
 2. Close Among Us and open your game folder using the steps below.
@@ -43,6 +43,21 @@ If you bought the game through Microsoft Store, use its **Xbox App** entry to
 browse the game files. Choose the editable game folder; these instructions do
 not require changing Windows permissions.
 
+## Automatic updates
+
+On Steam / Microsoft Store / Xbox App, after installing 1.1.0 once, the mod checks for compatible published releases
+when you open Among Us. If an update is ready, close the game normally and
+wait for it to install before reopening. Your settings and unrelated plugins
+are preserved, and the previous menu is backed up.
+
+See its status under **Delete → Settings → Mod updates**. The **Automatic
+updates** switch takes effect on the next launch.
+
+If an Among Us update breaks the mod, a compatible build must be published
+first. If the mod cannot start at all, download and run the latest installer.
+An updater cannot automatically repair code broken by a game update. Epic Games
+users install updates from the latest manual ZIP.
+
 ## Replacing another menu
 
 Before copying the new files, back up old `MalumMenu.dll`, `HaddadMenu.dll` or
@@ -52,4 +67,4 @@ Xbox / Microsoft Store gameplay has been tested. Steam and Epic Games gameplay
 have not yet been tested. These packages are for Among Us 2026.9.29 on Windows
 PC.
 
-[Download page](https://github.com/ProXgram/MalumMenuEnhanced/releases/tag/v1.0.1) · [Source](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0.1/MalumMenuEnhanced-1.0.1-Source.zip) · [Credits](../CREDITS.md)
+[Download page](https://github.com/ProXgram/MalumMenuEnhanced/releases/tag/v1.1.0) · [Source](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhanced-1.1.0-Source.zip) · [Credits](../CREDITS.md)

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>AutomaticUpdate.Tests</AssemblyName>
+    <PathMap>$(MSBuildProjectDirectory)=/_/MalumMenuEnhanced/tests/AutomaticUpdate.Tests</PathMap>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Updates/UpdateManifest.cs" Link="UpdateManifest.cs" />
+    <Compile Include="../../src/Updates/UpdateTrust.cs" Link="UpdateTrust.cs" />
+    <Compile Include="../../src/Updates/AutomaticUpdateHandler.cs" Link="AutomaticUpdateHandler.cs" />
+  </ItemGroup>
+</Project>

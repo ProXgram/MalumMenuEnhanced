@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>UpdateManifest.Tests</AssemblyName>
+    <PathMap>$(MSBuildProjectDirectory)=/_/MalumMenuEnhanced/tests/UpdateManifest.Tests</PathMap>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Updates/UpdateManifest.cs" Link="UpdateManifest.cs" />
+    <Compile Include="../../src/Updates/UpdateTrust.cs" Link="UpdateTrust.cs" />
+  </ItemGroup>
+</Project>

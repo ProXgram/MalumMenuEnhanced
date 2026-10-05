@@ -2,6 +2,7 @@
 
 Run from any folder: python scripts/package-manual.py
 Use --platform steam for the current 64-bit Steam game package.
+Use --version with --plugin-sha and --dll-sha for a new verified release.
 The optional --draft mode creates an explicitly unfinished preview while
 redistribution notices and corresponding-source assets are being collected.
 Existing plugin/source/setup releases and the installed game are never changed.
@@ -71,6 +72,10 @@ This package targets the 64-bit Steam build of Among Us 19.0.0 / 2026.9.29. Stea
 Source and credits: https://github.com/ProXgram/MalumMenuEnhanced
 """
 
+AUTOMATIC_UPDATES = """Automatic updates on Steam / Microsoft Store / Xbox App: The menu checks for a compatible published release when Among Us opens. A verified update installs after you close Among Us and keeps your settings. A new game version needs a compatible mod release before the menu can update. Epic Games uses updates from the latest manual ZIP.
+
+"""
+
 
 def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
@@ -79,6 +84,21 @@ def digest(data: bytes) -> str:
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise SystemExit(message)
+
+
+def numeric_version(value: str) -> str:
+    parts = value.split(".")
+    if not (2 <= len(parts) <= 4 and len(value) <= 43 and all(
+        re.fullmatch(r"0|[1-9][0-9]*", part) and int(part) <= 2147483647 for part in parts
+    )):
+        raise argparse.ArgumentTypeError("Version must contain two to four numeric parts.")
+    return value
+
+
+def sha256_argument(value: str) -> str:
+    if not re.fullmatch(r"[0-9a-fA-F]{64}", value):
+        raise argparse.ArgumentTypeError("Supply a 64-digit hexadecimal SHA256.")
+    return value.upper()
 
 
 def safe_name(name: str) -> str:
@@ -186,17 +206,29 @@ def main() -> None:
     parser.add_argument("--draft", action="store_true", help="Build an explicitly unfinished preview.")
     parser.add_argument("--platform", choices=("windows", "steam"), default="windows",
                         help="Choose the existing Windows stores package or the current 64-bit Steam package.")
+    parser.add_argument("--version", type=numeric_version, default="1.0", help="Verified plugin release version; defaults to the original pinned 1.0 package.")
+    parser.add_argument("--plugin-sha", type=sha256_argument, help="Required verified plugin ZIP hash for versions after 1.0.")
+    parser.add_argument("--dll-sha", type=sha256_argument, help="Required verified plugin DLL hash for versions after 1.0.")
     args = parser.parse_args()
     steam = args.platform == "steam"
-    output_name = STEAM_OUTPUT_NAME if steam else OUTPUT_NAME
+    plugin_path = ROOT / f"downloads/v{args.version}/MalumMenuEnhanced-{args.version}-Plugin.zip"
+    if args.version == "1.0":
+        require(args.plugin_sha is None or args.plugin_sha == PLUGIN_SHA, "The original plugin ZIP pin cannot be changed.")
+        require(args.dll_sha is None or args.dll_sha == DLL_SHA, "The original plugin DLL pin cannot be changed.")
+        plugin_sha, dll_sha = PLUGIN_SHA, DLL_SHA
+    else:
+        require(args.plugin_sha is not None and args.dll_sha is not None,
+                "New versions require --plugin-sha and --dll-sha from verified build artifacts.")
+        plugin_sha, dll_sha = args.plugin_sha, args.dll_sha
+    output_name = (STEAM_OUTPUT_NAME if steam else OUTPUT_NAME).replace("-1.0-", f"-{args.version}-")
     loader, directories = pinned_zip(LOADER, LOADER_SHA)
-    plugin, _ = pinned_zip(PLUGIN, PLUGIN_SHA)
+    plugin, _ = pinned_zip(plugin_path, plugin_sha)
     require(len(loader) == 228, "The loader file count differs from the verified release.")
     required_loader = {"winhttp.dll", "doorstop_config.ini", ".doorstop_version",
                        "BepInEx/core/BepInEx.Unity.IL2CPP.dll", "dotnet/coreclr.dll"}
     require(required_loader <= loader.keys(), "The verified loader layout is incomplete.")
     expected_plugin = {DLL_PATH, "README.md", "FORK.md", "CREDITS.md", "FEATURES.md", "LICENSE"}
-    require(set(plugin) == expected_plugin and digest(plugin[DLL_PATH]) == DLL_SHA,
+    require(set(plugin) == expected_plugin and digest(plugin[DLL_PATH]) == dll_sha,
             "The plugin archive differs from its verified release layout.")
     require(DLL_PATH not in loader, "The loader already contains a menu DLL.")
     files = dict(loader)
@@ -205,7 +237,11 @@ def main() -> None:
         path = ROOT / name
         require(path.is_file() and not path.is_symlink(), "A root license or credits file is missing.")
         files[name] = path.read_bytes()
-    files["INSTALL.txt"] = (STEAM_INSTALL if steam else INSTALL).replace("\n", "\r\n").encode("utf-8")
+    install = STEAM_INSTALL if steam else INSTALL
+    if args.version != "1.0":
+        install = install.replace("MalumMenu Enhanced 1.0 by Rifegul", f"MalumMenu Enhanced {args.version} by Rifegul")
+        install = install.replace("Source and credits:", AUTOMATIC_UPDATES + "Source and credits:")
+    files["INSTALL.txt"] = install.replace("\n", "\r\n").encode("utf-8")
     assets, legal_complete = legal_assets(args.draft, loader)
     require(not set(files) & set(assets), "A notice asset would overwrite a loader file.")
     files.update(assets)
@@ -261,8 +297,8 @@ def main() -> None:
         "bytes": output.stat().st_size,
         "sha256": digest(output.read_bytes()),
         "loaderArchiveSha256": LOADER_SHA,
-        "pluginArchiveSha256": PLUGIN_SHA,
-        "pluginDllSha256": DLL_SHA,
+        "pluginArchiveSha256": plugin_sha,
+        "pluginDllSha256": dll_sha,
         "officialLoaderFiles": len(loader),
         "allOfficialLoaderBytesPreserved": True,
         "menuDllCount": 1,
@@ -280,9 +316,13 @@ def main() -> None:
     }
     if steam:
         report.update({"platform": "Steam", "architecture": "x64", "steamLiveTested": False})
+    if args.version != "1.0":
+        report.update({"modVersion": args.version, "automaticUpdatesIncluded": True})
     verification = ROOT / "artifacts/verification"
     verification.mkdir(parents=True, exist_ok=True)
     report_name = "manual-package-steam" if steam else "manual-package"
+    if args.version != "1.0":
+        report_name += "-" + args.version
     (verification / (report_name + ("-draft.json" if args.draft else ".json"))).write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))

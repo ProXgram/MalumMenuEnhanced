@@ -29,13 +29,13 @@ distribution with the repository's corresponding source archive.
 
 ## Download pins
 
-The installer downloads these exact artifacts and checks their SHA256 before
-use. It does not execute an unknown latest download.
+The built-in release has pinned SHA256 values. A newer compatible release is
+accepted only through the publisher's RSA/SHA256 signed update manifest.
 
 | Component | Source | SHA256 |
 | --- | --- | --- |
 | BepInEx 6 IL2CPP x64 build 755 | [Official archive](https://builds.bepinex.dev/projects/bepinex_be/755/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755%2B3fab71a.zip) | `3616D6A67F5F595973EC4AA7BD7EDAF7F799D5BB9926F7146A6DCC7B4ABF478F` |
-| MalumMenu Enhanced 1.0 plugin | [Pinned repository archive](https://raw.githubusercontent.com/ProXgram/MalumMenuEnhanced/88bdfd5c1ae74f92933b375adb19e5f309895da5/downloads/v1.0/MalumMenuEnhanced-1.0-Plugin.zip) | `227F8D82300F5F89D30C49BEEB4E83C152C072D07BAC5400B194D0D6FBB6B8C1` |
+| MalumMenu Enhanced plugin | Current release's `MalumMenuEnhanced-1.1.0-Plugin.zip` | Pinned in `SetupForm.Catalog` and authenticated by `updates/latest.json` |
 
 The loader hash was computed from the official archive. It is not a signed
 checksum supplied by its publisher. BepInEx is downloaded directly and is not
@@ -53,14 +53,47 @@ Game compatibility and beginner instructions are in [installation help](../docs/
 
 ## Complete manual ZIP
 
-The manual package includes the verified BepInEx loader and the version 1.0
+The manual package includes the verified BepInEx loader and the version 1.1.0
 plugin. There is a Steam ZIP and a Microsoft Store / Epic Games / Xbox App ZIP;
 both use the same extraction layout and x64 loader for Among Us 2026.9.29.
 Xbox / Microsoft Store gameplay is tested; Steam and Epic gameplay are not
 yet tested. [Steam became 64-bit in this game update](https://github.com/Gurge44/EndlessHostRoles/releases/tag/v8.0.2).
 
-Run `python scripts/package-manual.py` for Microsoft Store / Epic Games / Xbox
-App, or `python scripts/package-manual.py --platform steam` for Steam. Its source
-inputs, checksums and licenses are documented under `ManualLegal`. Then run
-`python scripts/package-setup.py --release 1.0.1` to create the corresponding
-source archive for the updated installer. The mod itself remains version 1.0.
+Use `scripts/package-manual.py --version 1.1.0 --plugin-sha <SHA256> --dll-sha
+<SHA256>` with the verified plugin archive and DLL hashes; add `--platform steam`
+for Steam. Historical `--version 1.0` packages retain their original pins. Loader
+inputs, checksums and licenses are documented under `ManualLegal`.
+
+## Automatic updates
+
+Steam / Microsoft Store / Xbox App plugins check `updates/latest.json` once at startup. Epic Games uses manual updates. The updater verifies the
+publisher signature, product, numeric version, supported game versions, exact
+release asset URLs, sizes and SHA256 values before launching a downloaded
+installer. The helper waits for Among Us to close, verifies the actual native
+game and installed DLL, and installs through the normal backup/rollback path.
+It never closes or restarts the game. Offline or rejected checks leave it alone.
+Updater settings are under **Delete → Settings** and take effect next launch.
+
+An Among Us update may require SDK, patches, loader or native validation changes.
+These must be implemented and tested before publishing a compatible mod build.
+If a game update prevents the old plugin from loading, its updater cannot run;
+the user must run the latest installer.
+
+## Publishing an update
+
+1. Update the mod and installer versions, supported game versions and SDK/native
+   validation as needed. Build and test the actual target game release.
+2. Package the plugin into `downloads/v<VERSION>/`, update the built-in installer
+   pin, publish the single-file installer and create the manual ZIPs.
+3. Install Python's `cryptography` library. Run `scripts/sign-update-manifest.py
+   --version <VERSION> --private-key <KEY-OUTSIDE-THE-CHECKOUT> --game-version
+   <GAME-VERSION>`; repeat `--game-version` for verified version aliases.
+   The signing key must match `UpdateTrust.PublicKeyPem`. Keep it private and
+   outside this repository; the script does not generate or publish keys.
+4. Verify with the manifest test CLI, then package the complete corresponding
+   source using `scripts/package-setup.py --release <VERSION>`.
+5. Publish the matching plugin ZIP and setup EXE assets before activating the
+   signed `updates/latest.json` on `main`. Keep previous release assets intact.
+
+Maintainer tests: `tests/UpdateManifest.Tests`, `tests/AutomaticUpdate.Tests`,
+`tests/AutoUpdate.Tests`, and the existing `tests/Setup.Core.Tests`.
