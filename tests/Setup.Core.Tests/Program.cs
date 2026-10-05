@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using System.Buffers.Binary;
 using System.Net;
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -7,6 +8,15 @@ using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using MalumMenuEnhanced.Setup.Core;
+
+if (args is ["--verify-unity-reference", var referencePath])
+{
+    using var fixture = new Fixture(steam: true);
+    File.WriteAllBytes(Path.Combine(fixture.Game, "Among Us_Data", "globalgamemanagers"), File.ReadAllBytes(referencePath));
+    var error = InstallerService.ValidateGameDirectory(fixture.Game);
+    Console.WriteLine(error == null ? "PASS Unity PlayerSettings reference validates in isolated Steam fixture. Source was read only." : "FAIL " + error);
+    return error == null ? 0 : 1;
+}
 
 var tests = new List<(string Name, Func<Task> Run)>();
 void Test(string name, Func<Task> run) => tests.Add((name, run));
@@ -131,14 +141,14 @@ Test("Xbox executable alias need only exist while native architecture is checked
     Check(InstallerService.ValidateGameDirectory(f.Game) == null); return Task.CompletedTask;
 });
 
-Test("32-bit game is rejected", () =>
+Test("Mismatched native game architectures are rejected", () =>
 {
     using var f = new Fixture(); var bytes = Fixture.NativeBytes(); bytes[132] = 0x4c; bytes[133] = 0x01;
     File.WriteAllBytes(Path.Combine(f.Game, "GameAssembly.dll"), bytes);
-    Check(InstallerService.ValidateGameDirectory(f.Game)!.Contains("64-bit")); return Task.CompletedTask;
+    Check(InstallerService.ValidateGameDirectory(f.Game)!.Contains("mismatched")); return Task.CompletedTask;
 });
 
-Test("Steam build is explicitly rejected", () =>
+Test("Unverified Steam folder is rejected", () =>
 {
     using var f = new Fixture(); f.Write("steam_api64.dll", "steam");
     Check(InstallerService.ValidateGameDirectory(f.Game)!.Contains("Steam")); return Task.CompletedTask;
@@ -372,9 +382,10 @@ Test("Rollback failure keeps originals and reports recovery location", async () 
     finally { locked?.Dispose(); if (recovery != null && Directory.Exists(recovery)) Directory.Delete(recovery, true); }
 });
 
-Test("Real pinned archives install successfully in an isolated game fixture", async () =>
+foreach (var steam in new[] { false, true })
+Test("Real pinned archives install successfully in an isolated " + (steam ? "Steam" : "Xbox") + " game fixture", async () =>
 {
-    using var f = new Fixture();
+    using var f = new Fixture(steam);
     var repo = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
     var plugin = File.ReadAllBytes(Path.Combine(repo, "downloads/v1.0/MalumMenuEnhanced-1.0-Plugin.zip"));
     var loader = File.ReadAllBytes(Path.Combine(repo, "artifacts/verification/downloader-inputs/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755+3fab71a.zip"));
@@ -437,6 +448,163 @@ Test("Linked dependency inside existing loader is refused", async () =>
     finally { Directory.Delete(core); }
 });
 
+Test("Supported Steam v19 64-bit game validates and installs the pinned loader", async () =>
+{
+    using var f = new Fixture(steam: true);
+    Check(InstallerService.ValidateGameDirectory(f.Game) == null, InstallerService.ValidateGameDirectory(f.Game) ?? "");
+    Check(InstallerService.GetGameArchitecture(f.Game) == GameArchitecture.X64);
+    var result = await f.Service().InstallAsync(f.Game);
+    Check(result.LoaderInstalled && InstallerService.CheckCompatibleLoader(f.Game));
+    Check(File.ReadAllBytes(f.PluginPath).SequenceEqual(f.PluginDll));
+    var second = await f.Service().InstallAsync(f.Game);
+    Check(!second.LoaderInstalled);
+    Check(File.ReadAllBytes(Path.Combine(second.BackupDirectory, "MalumMenuEnhanced.dll")).SequenceEqual(f.PluginDll));
+});
+
+Test("Pasted Steam folder with trailing separators validates and installs", async () =>
+{
+    using var f = new Fixture(steam: true);
+    foreach (var suffix in new[] { Path.DirectorySeparatorChar.ToString(), Path.AltDirectorySeparatorChar.ToString() })
+        Check(InstallerService.ValidateGameDirectory(f.Game + suffix) == null);
+    var result = await f.Service().InstallAsync(f.Game + Path.DirectorySeparatorChar);
+    Check(result.GameDirectory == f.Game && result.LoaderInstalled);
+});
+
+Test("Older 32-bit Steam game is refused before downloads or changes", async () =>
+{
+    using var f = new Fixture(steam: true);
+    foreach (var file in new[] { "Among Us.exe", "GameAssembly.dll", "UnityPlayer.dll" })
+        File.WriteAllBytes(Path.Combine(f.Game, file), Fixture.NativeBytes(GameArchitecture.X86));
+    var before = f.Snapshot();
+    await Reject(() => f.Service().InstallAsync(f.Game), "32-bit");
+    f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+});
+
+foreach (var file in new[] { "Among Us.exe", "UnityPlayer.dll" })
+    Test("Steam native architecture mismatch stops safely: " + file, async () =>
+    {
+        using var f = new Fixture(steam: true);
+        File.WriteAllBytes(Path.Combine(f.Game, file), Fixture.NativeBytes(GameArchitecture.X86));
+        var before = f.Snapshot();
+        await Reject(() => f.Service().InstallAsync(f.Game), "mismatched");
+        f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+    });
+
+Test("Steam app manifest alone does not establish the supported game version", async () =>
+{
+    using var f = new Fixture(steam: true);
+    File.Delete(Path.Combine(f.Game, "Among Us_Data", "globalgamemanagers"));
+    var before = f.Snapshot();
+    await Reject(() => f.Service().InstallAsync(f.Game), "version");
+    f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+});
+
+Test("Steam PlayerSettings version is checked rather than unrelated matching text", async () =>
+{
+    using var f = new Fixture(steam: true);
+    var unsupported = Fixture.UnitySettingsBytes("2025.1.1").Concat(Encoding.UTF8.GetBytes("2026.9.29")).ToArray();
+    // Keep the serialized file header valid so rejection reaches the actual bundleVersion field.
+    BinaryPrimitives.WriteUInt32BigEndian(unsupported.AsSpan(4, 4), (uint)unsupported.Length);
+    BinaryPrimitives.WriteInt64BigEndian(unsupported.AsSpan(24, 8), unsupported.Length);
+    File.WriteAllBytes(Path.Combine(f.Game, "Among Us_Data", "globalgamemanagers"), unsupported);
+    var before = f.Snapshot();
+    await Reject(() => f.Service().InstallAsync(f.Game), "version");
+    f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+});
+
+foreach (var change in new[] { "format", "endian", "size", "unity-schema", "platform", "type-count", "object-bounds", "object-type", "string-length", "logos-count", "mipmaps-count", "stack-count", "truncated", "publisher", "product" })
+    Test("Malformed or unsupported Steam PlayerSettings stops safely: " + change, async () =>
+    {
+        using var f = new Fixture(steam: true); var bytes = Fixture.UnitySettingsBytes("2026.9.29");
+        var dataOffset = (int)BinaryPrimitives.ReadInt64BigEndian(bytes.AsSpan(32, 8));
+        switch (change)
+        {
+            case "format": BinaryPrimitives.WriteUInt32BigEndian(bytes.AsSpan(8, 4), 21); break;
+            case "endian": bytes[16] = 1; break;
+            case "size": BinaryPrimitives.WriteInt64BigEndian(bytes.AsSpan(24, 8), bytes.Length + 1); break;
+            case "unity-schema": bytes[48] = (byte)'9'; break;
+            case "platform": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(60, 4), 5); break;
+            case "type-count": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(65, 4), int.MaxValue); break;
+            case "object-bounds": BinaryPrimitives.WriteInt64LittleEndian(bytes.AsSpan(104, 8), long.MaxValue); break;
+            case "object-type": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(116, 4), 1); break;
+            case "string-length": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(dataOffset + 36, 4), int.MaxValue); break;
+            case "logos-count": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(dataOffset + 168, 4), 257); break;
+            case "mipmaps-count": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(dataOffset + 296, 4), -1); break;
+            case "stack-count": BinaryPrimitives.WriteInt32LittleEndian(bytes.AsSpan(dataOffset + 300, 4), int.MaxValue); break;
+            case "truncated": bytes = bytes[..^4]; break;
+            case "publisher": bytes[dataOffset + 40] = (byte)'X'; break;
+            case "product": bytes[dataOffset + 56] = (byte)'X'; break;
+        }
+        File.WriteAllBytes(Path.Combine(f.Game, "Among Us_Data", "globalgamemanagers"), bytes);
+        var before = f.Snapshot(); await Reject(() => f.Service().InstallAsync(f.Game), "version");
+        f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+    });
+
+foreach (var manifest in new[]
+{
+    "\"AppState\" { \"appid\" \"999\" \"installdir\" \"Among Us\" }",
+    "\"AppState\" { \"appid\" \"945360\" \"appid\" \"945360\" \"installdir\" \"Among Us\" }",
+    "\"AppState\" { \"appid\" \"945360\" \"installdir\" \"../Among Us\" }",
+    "\"AppState\" { \"appid\" \"945360\" \"installdir\" \"Among Us\"",
+    "\"AppState\" { \"appid\" \"945360\" \"installdir\" \"Other game\" }"
+})
+    Test("Invalid Steam installation identity is refused: " + manifest, async () =>
+    {
+        using var f = new Fixture(steam: true); File.WriteAllText(f.SteamManifest, manifest);
+        var before = f.Snapshot(); await Reject(() => f.Service().InstallAsync(f.Game), "Steam installation");
+        f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+        Check(InstallerService.FindSteamGameDirectories([f.SteamRoot]).Count == 0);
+    });
+
+Test("Steam discovery uses the main library's app manifest", () =>
+{
+    using var f = new Fixture(steam: true);
+    Check(InstallerService.FindSteamGameDirectories([f.SteamRoot, f.SteamRoot]).SequenceEqual([f.Game]));
+    return Task.CompletedTask;
+});
+
+foreach (var legacy in new[] { false, true })
+    Test("Steam discovery reads external " + (legacy ? "legacy" : "modern") + " libraries", () =>
+    {
+        using var f = new Fixture(steam: true); using var external = new Fixture(steam: true);
+        var escaped = external.SteamRoot.Replace("\\", "\\\\");
+        File.WriteAllText(Path.Combine(f.SteamRoot, "steamapps", "libraryfolders.vdf"), legacy
+            ? $"\"LibraryFolders\" {{ \"1\" \"{escaped}\" }}"
+            : $"// Steam generated library list\n\"libraryfolders\" {{ \"1\" {{ \"path\" \"{escaped}\" \"apps\" {{ \"945360\" \"42\" }} }} }}");
+        Check(InstallerService.FindSteamGameDirectories([f.SteamRoot]).ToHashSet(StringComparer.OrdinalIgnoreCase)
+            .SetEquals([f.Game, external.Game]));
+        return Task.CompletedTask;
+    });
+
+Test("Malformed and oversized Steam library configuration does not prevent main-library discovery", () =>
+{
+    using var f = new Fixture(steam: true);
+    var path = Path.Combine(f.SteamRoot, "steamapps", "libraryfolders.vdf");
+    foreach (var bad in new[] { "\"libraryfolders\" {", new string('x', 1024 * 1024 + 1),
+        string.Concat(Enumerable.Repeat("a { ", 18)) + string.Concat(Enumerable.Repeat("} ", 18)) })
+    {
+        File.WriteAllText(path, bad);
+        Check(InstallerService.FindSteamGameDirectories([f.SteamRoot]).SequenceEqual([f.Game]));
+    }
+    return Task.CompletedTask;
+});
+
+foreach (var dependency in new[] { "winhttp.dll", "dotnet/coreclr.dll" })
+Test("Wrong native loader architecture is refused before game mutation: " + dependency, async () =>
+{
+    using var f = new Fixture(steam: true);
+    f.ReplaceLoader(Fixture.RewriteZip(f.Http.Responses["https://example.test/loader.zip"], dependency, Fixture.NativeBytes(GameArchitecture.X86)));
+    var before = f.Snapshot(); await Reject(() => f.Service().InstallAsync(f.Game), "incompatible"); f.AssertSnapshot(before);
+});
+
+Test("Existing x86 loader in current Steam game is preserved and refused before downloads", async () =>
+{
+    using var f = new Fixture(steam: true); f.ExistingLoader();
+    File.WriteAllBytes(Path.Combine(f.Game, "dotnet", "coreclr.dll"), Fixture.NativeBytes(GameArchitecture.X86));
+    var before = f.Snapshot(); await Reject(() => f.Service().InstallAsync(f.Game), "unknown");
+    f.AssertSnapshot(before); Check(f.Http.Requests.Count == 0);
+});
+
 var failed = 0;
 foreach (var test in tests)
 {
@@ -476,22 +644,35 @@ sealed class Fixture : IDisposable
 {
     public string Root { get; } = Path.Combine(Path.GetTempPath(), "MenuSetupTests", Guid.NewGuid().ToString("N"));
     public string Game { get; }
+    public string SteamRoot => Path.Combine(Root, "Steam");
+    public string SteamManifest => Path.Combine(SteamRoot, "steamapps", "appmanifest_945360.acf");
     public string PluginPath => Path.Combine(Game, "BepInEx", "plugins", "MalumMenuEnhanced.dll");
     public byte[] PluginDll { get; } = AssemblyBytes("MalumMenuEnhanced", 1);
     public FakeHttp Http { get; } = new();
     public HttpClient Client { get; }
     public SetupCatalog Catalog { get; private set; }
     private readonly List<(string, byte[], int)> _loader;
-    public Fixture()
+    public Fixture(bool steam = false)
     {
-        Game = Path.Combine(Root, "Among Us"); Directory.CreateDirectory(Path.Combine(Game, "Among Us_Data"));
+        Game = steam ? Path.Combine(SteamRoot, "steamapps", "common", "Among Us") : Path.Combine(Root, "Among Us");
+        Directory.CreateDirectory(Path.Combine(Game, "Among Us_Data"));
         foreach (var file in new[] { "Among Us.exe", "GameAssembly.dll", "UnityPlayer.dll" }) File.WriteAllBytes(Path.Combine(Game, file), NativeBytes());
         Write("Among Us_Data/app.info", "Innersloth\nAmong Us");
         var metadata = Path.Combine(Game, "Among Us_Data/il2cpp_data/Metadata/global-metadata.dat");
         Directory.CreateDirectory(Path.GetDirectoryName(metadata)!);
         File.WriteAllBytes(metadata, BitConverter.GetBytes(0xFAB11BAFu).Concat(BitConverter.GetBytes(31u)).ToArray());
-        Write("MicrosoftGame.config", "<Game><Identity Name=\"Innersloth.AmongUs\" Publisher=\"CN=5A57224C-EF56-4C83-83C1-11C78B125F60\" Version=\"2026.9.293.0\"/><DesktopRegistration><ProcessorArchitecture>x64</ProcessorArchitecture></DesktopRegistration><ExecutableList><Executable Name=\"Among Us.exe\"/></ExecutableList></Game>");
-        Write("AppxManifest.xml", "<Package xmlns=\"http://schemas.microsoft.com/appx/manifest/foundation/windows10\"><Identity Name=\"Innersloth.AmongUs\" Publisher=\"CN=5A57224C-EF56-4C83-83C1-11C78B125F60\" Version=\"2026.9.293.0\" ProcessorArchitecture=\"x64\"/></Package>");
+        if (steam)
+        {
+            File.WriteAllText(SteamManifest, "\"AppState\" { \"appid\" \"945360\" \"name\" \"Among Us\" \"installdir\" \"Among Us\" \"buildid\" \"123\" }");
+            Write("steam_api64.dll", "Steam native API marker");
+            // Fixture contains a bounded PlayerSettings object, not just a version string elsewhere in the file.
+            File.WriteAllBytes(Path.Combine(Game, "Among Us_Data", "globalgamemanagers"), UnitySettingsBytes("2026.9.29"));
+        }
+        else
+        {
+            Write("MicrosoftGame.config", "<Game><Identity Name=\"Innersloth.AmongUs\" Publisher=\"CN=5A57224C-EF56-4C83-83C1-11C78B125F60\" Version=\"2026.9.293.0\"/><DesktopRegistration><ProcessorArchitecture>x64</ProcessorArchitecture></DesktopRegistration><ExecutableList><Executable Name=\"Among Us.exe\"/></ExecutableList></Game>");
+            Write("AppxManifest.xml", "<Package xmlns=\"http://schemas.microsoft.com/appx/manifest/foundation/windows10\"><Identity Name=\"Innersloth.AmongUs\" Publisher=\"CN=5A57224C-EF56-4C83-83C1-11C78B125F60\" Version=\"2026.9.293.0\" ProcessorArchitecture=\"x64\"/></Package>");
+        }
         _loader = [
             ("BepInEx/core/BepInEx.Core.dll", AssemblyBytes("BepInEx.Core", 6), 0),
             ("BepInEx/core/BepInEx.Unity.IL2CPP.dll", AssemblyBytes("BepInEx.Unity.IL2CPP", 6), 0),
@@ -530,10 +711,43 @@ sealed class Fixture : IDisposable
     }
     public void Dispose() { Client.Dispose(); Directory.Delete(Root, true); }
     private static string Hash(byte[] bytes) => Convert.ToHexString(SHA256.HashData(bytes));
-    public static byte[] NativeBytes()
+    public static byte[] NativeBytes(GameArchitecture architecture = GameArchitecture.X64)
     {
         var bytes = new byte[256]; bytes[0] = 0x4D; bytes[1] = 0x5A; BitConverter.GetBytes(128).CopyTo(bytes, 60);
-        bytes[128] = 0x50; bytes[129] = 0x45; bytes[132] = 0x64; bytes[133] = 0x86; return bytes;
+        bytes[128] = 0x50; bytes[129] = 0x45;
+        BitConverter.GetBytes((ushort)(architecture == GameArchitecture.X64 ? 0x8664 : 0x014c)).CopyTo(bytes, 132);
+        return bytes;
+    }
+    public static byte[] UnitySettingsBytes(string version)
+    {
+        using var settingsStream = new MemoryStream();
+        using var settings = new BinaryWriter(settingsStream, Encoding.UTF8, true);
+        void Align(BinaryWriter writer) { while ((writer.BaseStream.Position & 3) != 0) writer.Write((byte)0); }
+        void String(string value)
+        { var bytes = Encoding.UTF8.GetBytes(value); settings.Write(bytes.Length); settings.Write(bytes); Align(settings); }
+        settings.Write(new byte[36]); String("Innersloth"); String("Among Us");
+        settings.Write(new byte[104]); settings.Write(0); Align(settings);
+        settings.Write(new byte[124]); settings.Write(0); settings.Write(0); Align(settings);
+        settings.Write(new byte[76]); String("public.app-category.games"); settings.Write(new byte[144]);
+        String("1.0"); String("1.0"); String(version);
+        var objectBytes = settingsStream.ToArray();
+        using var metadataStream = new MemoryStream();
+        using var metadata = new BinaryWriter(metadataStream, Encoding.UTF8, true);
+        metadata.Write(Encoding.UTF8.GetBytes("2022.3.44f1\0")); metadata.Write(19); metadata.Write(false);
+        metadata.Write(1); metadata.Write(129); metadata.Write(false); metadata.Write((short)-1); metadata.Write(new byte[16]);
+        metadata.Write(1); Align(metadata); metadata.Write(1L); metadata.Write(0L); metadata.Write((uint)objectBytes.Length); metadata.Write(0);
+        var metadataBytes = metadataStream.ToArray();
+        var dataOffset = (48 + metadataBytes.Length + 15) & ~15;
+        var result = new byte[dataOffset + objectBytes.Length];
+        BinaryPrimitives.WriteUInt32BigEndian(result.AsSpan(0, 4), (uint)metadataBytes.Length);
+        BinaryPrimitives.WriteUInt32BigEndian(result.AsSpan(4, 4), (uint)result.Length);
+        BinaryPrimitives.WriteUInt32BigEndian(result.AsSpan(8, 4), 22);
+        BinaryPrimitives.WriteUInt32BigEndian(result.AsSpan(12, 4), (uint)dataOffset);
+        BinaryPrimitives.WriteUInt32BigEndian(result.AsSpan(20, 4), (uint)metadataBytes.Length);
+        BinaryPrimitives.WriteInt64BigEndian(result.AsSpan(24, 8), result.Length);
+        BinaryPrimitives.WriteInt64BigEndian(result.AsSpan(32, 8), dataOffset);
+        metadataBytes.CopyTo(result, 48); objectBytes.CopyTo(result, dataOffset);
+        return result;
     }
     public static byte[] AssemblyBytes(string name, int major)
     {
@@ -553,6 +767,15 @@ sealed class Fixture : IDisposable
             foreach (var item in entries)
             { var entry = zip.CreateEntry(item.Name); entry.ExternalAttributes = item.Attributes; using var output = entry.Open(); output.Write(item.Bytes); }
         return stream.ToArray();
+    }
+    public static byte[] RewriteZip(byte[] bytes, string name, byte[] replacement)
+    {
+        using var stream = new MemoryStream(bytes); using var archive = new ZipArchive(stream, ZipArchiveMode.Read);
+        return Zip(archive.Entries.Select(entry =>
+        {
+            using var input = entry.Open(); using var contents = new MemoryStream(); input.CopyTo(contents);
+            return (entry.FullName, entry.FullName == name ? replacement : contents.ToArray(), entry.ExternalAttributes);
+        }));
     }
     public static void MakeLink(string link, string target)
     {

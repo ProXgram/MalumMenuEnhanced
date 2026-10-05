@@ -1,6 +1,7 @@
 """Build and verify the complete manual Windows PC package from pinned inputs.
 
 Run from any folder: python scripts/package-manual.py
+Use --platform steam for the current 64-bit Steam game package.
 The optional --draft mode creates an explicitly unfinished preview while
 redistribution notices and corresponding-source assets are being collected.
 Existing plugin/source/setup releases and the installed game are never changed.
@@ -28,6 +29,7 @@ PLUGIN_SHA = "227F8D82300F5F89D30C49BEEB4E83C152C072D07BAC5400B194D0D6FBB6B8C1"
 DLL_SHA = "D3FCC31C69C83F0381F25B5AC33FF052162D9BDCD6D74CDBDEFBFFEDD6E22559"
 DLL_PATH = "BepInEx/plugins/MalumMenuEnhanced.dll"
 OUTPUT_NAME = "MalumMenuEnhanced-1.0-MicrosoftStore-EpicGames-XboxApp.zip"
+STEAM_OUTPUT_NAME = "MalumMenuEnhanced-1.0-Steam.zip"
 LEGAL = ROOT / "installer/ManualLegal"
 TIMESTAMP = (2026, 10, 5, 0, 0, 0)
 MAX_FILE = 128 * 1024 * 1024
@@ -48,6 +50,23 @@ Epic Games: Library > Among Us > Manage > Installation > folder icon.
 Updating another menu? Back up old MalumMenu.dll, HaddadMenu.dll or MalumMenuEnhanced.dll outside BepInEx/plugins first. Keep only one menu DLL active.
 
 The Xbox / Microsoft Store build has been tested. Epic Games uses this same manual package but has not yet been tested. This package is for PC, not Xbox consoles.
+
+Source and credits: https://github.com/ProXgram/MalumMenuEnhanced
+"""
+
+STEAM_INSTALL = """MalumMenu Enhanced 1.0 by Rifegul
+Windows PC: Steam (64-bit)
+Among Us 19.0.0 / 2026.9.29
+
+1. Close Among Us.
+2. In Steam, open Library > Among Us > Properties > Installed Files > Browse.
+3. Extract this ZIP, then copy everything inside it into the game folder containing Among Us.exe. Copy BepInEx, dotnet and the loose files directly beside Among Us.exe, not the outer ZIP folder.
+4. Open Among Us from Steam. Wait for the first launch to finish preparing the mod.
+5. Press Delete to open the menu.
+
+Updating another menu? Back up old MalumMenu.dll, HaddadMenu.dll or MalumMenuEnhanced.dll outside BepInEx/plugins first. Keep only one menu DLL active.
+
+This package targets the 64-bit Steam build of Among Us 19.0.0 / 2026.9.29. Steam has not yet been tested live. Older 32-bit Steam versions need a matching loader and mod version.
 
 Source and credits: https://github.com/ProXgram/MalumMenuEnhanced
 """
@@ -156,14 +175,20 @@ def check_release_text(name: str, data: bytes) -> None:
     for marker in markers:
         require(marker not in lower and marker.decode().encode("utf-16le") not in lower,
                 "Release content contains an unwanted build-environment reference: " + name)
-    require(b"c:\\users\\" not in lower and b"c:/users/" not in lower,
-            "Release content contains an absolute workspace path: " + name)
+    path_markers = [bytes.fromhex(v) for v in ("633a5c75736572735c", "633a2f75736572732f")]
+    for marker in path_markers:
+        require(marker not in lower and marker.decode().encode("utf-16le") not in lower,
+                "Release content contains an absolute workspace path: " + name)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--draft", action="store_true", help="Build an explicitly unfinished preview.")
+    parser.add_argument("--platform", choices=("windows", "steam"), default="windows",
+                        help="Choose the existing Windows stores package or the current 64-bit Steam package.")
     args = parser.parse_args()
+    steam = args.platform == "steam"
+    output_name = STEAM_OUTPUT_NAME if steam else OUTPUT_NAME
     loader, directories = pinned_zip(LOADER, LOADER_SHA)
     plugin, _ = pinned_zip(PLUGIN, PLUGIN_SHA)
     require(len(loader) == 228, "The loader file count differs from the verified release.")
@@ -180,7 +205,7 @@ def main() -> None:
         path = ROOT / name
         require(path.is_file() and not path.is_symlink(), "A root license or credits file is missing.")
         files[name] = path.read_bytes()
-    files["INSTALL.txt"] = INSTALL.replace("\n", "\r\n").encode("utf-8")
+    files["INSTALL.txt"] = (STEAM_INSTALL if steam else INSTALL).replace("\n", "\r\n").encode("utf-8")
     assets, legal_complete = legal_assets(args.draft, loader)
     require(not set(files) & set(assets), "A notice asset would overwrite a loader file.")
     files.update(assets)
@@ -200,7 +225,7 @@ def main() -> None:
 
     output_directory = ROOT / ("artifacts/verification/manual-package" if args.draft else "downloads/manual")
     output_directory.mkdir(parents=True, exist_ok=True)
-    output = output_directory / OUTPUT_NAME.replace(".zip", "-DRAFT.zip") if args.draft else output_directory / OUTPUT_NAME
+    output = output_directory / (output_name.replace(".zip", "-DRAFT.zip") if args.draft else output_name)
     with tempfile.TemporaryDirectory(prefix="MenuManualPackage-") as temporary:
         staging_zip = Path(temporary) / output.name
         with zipfile.ZipFile(staging_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -253,9 +278,12 @@ def main() -> None:
         "fixedZipTimestamp": list(TIMESTAMP),
         "epicGamesLiveTested": False,
     }
+    if steam:
+        report.update({"platform": "Steam", "architecture": "x64", "steamLiveTested": False})
     verification = ROOT / "artifacts/verification"
     verification.mkdir(parents=True, exist_ok=True)
-    (verification / ("manual-package-draft.json" if args.draft else "manual-package.json")).write_text(
+    report_name = "manual-package-steam" if steam else "manual-package"
+    (verification / (report_name + ("-draft.json" if args.draft else ".json"))).write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
 

@@ -113,7 +113,7 @@ internal sealed class SetupForm : Form
         layout.Controls.Add(actions, 0, 4);
 
         var footer = new Panel { Dock = DockStyle.Fill };
-        footer.Controls.Add(TextLabel("Windows 10/11 (64-bit)  ·  Xbox App / Microsoft Store", 9, FontStyle.Regular, new Point(0, 0), new Size(678, 22), Muted));
+        footer.Controls.Add(TextLabel("Windows 10/11 (64-bit)  ·  Steam / Microsoft Store / Xbox App", 9, FontStyle.Regular, new Point(0, 0), new Size(678, 22), Muted));
         footer.Controls.Add(TextLabel("For Among Us 2026.9.29. Internet connection required.", 9, FontStyle.Regular, new Point(0, 23), new Size(475, 22), Muted));
         var credits = new LinkLabel { Text = "Credits & licenses", LinkColor = Muted, ActiveLinkColor = Accent, VisitedLinkColor = Muted, Location = new Point(551, 23), Size = new Size(130, 25), Font = new Font("Segoe UI", 9) };
         credits.LinkClicked += (_, _) => ShowLicenses();
@@ -161,7 +161,7 @@ internal sealed class SetupForm : Form
             else
             {
                 locationHint.Text = "Click Browse and select Among Us.exe in your game folder.";
-                status.Text = "We couldn’t find your game automatically.\nXbox App: Manage → Files → Browse. Epic Games: Manage → Installation.";
+                status.Text = "Steam: Manage → Browse local files.\nXbox App / Microsoft Store: Manage → Files → Browse.";
             }
         }
         catch
@@ -248,7 +248,7 @@ internal sealed class SetupForm : Form
     private static string FriendlyError(Exception error) => error switch
     {
         HttpRequestException => "The download failed. Check your internet connection and try again.",
-        UnauthorizedAccessException => "Windows won’t let us write to that folder. Choose the game folder from Xbox App or Epic Games.",
+        UnauthorizedAccessException => "Windows won’t let us write to that folder. Choose the game folder from Steam or Xbox App.",
         _ => error.Message.Length > 165 ? "Installation could not finish. Click Show details for the reason and recovery steps." : error.Message
     };
 

@@ -1,5 +1,6 @@
 """Package the single-file setup program with its corresponding repository source."""
 from pathlib import Path, PurePosixPath
+import argparse
 import hashlib
 import json
 import shutil
@@ -7,6 +8,9 @@ import subprocess
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--release", default="1.0", choices=("1.0", "1.0.1"), help="Release source archive version")
+args = parser.parse_args()
 published = root / "artifacts" / "setup" / "publish"
 executable = published / "MalumMenuEnhancedSetup.exe"
 if not executable.is_file():
@@ -27,7 +31,7 @@ source_files = sorted({name for name in files if name and not any(
 ) and (root / name).is_file()})
 release = root / "artifacts" / "setup" / "release"
 release.mkdir(parents=True, exist_ok=True)
-source_archive = release / "MalumMenuEnhanced-1.0-Source.zip"
+source_archive = release / f"MalumMenuEnhanced-{args.release}-Source.zip"
 with zipfile.ZipFile(source_archive, "w", zipfile.ZIP_DEFLATED) as archive:
     for name in source_files:
         archive.write(root / name, name)
@@ -41,9 +45,12 @@ with zipfile.ZipFile(source_archive) as archive:
 downloads = root / "downloads"
 (downloads / "setup").mkdir(parents=True, exist_ok=True)
 shutil.copy2(executable, downloads / "setup" / executable.name)
-shutil.copy2(source_archive, downloads / "v1.0" / source_archive.name)
+source_destination = downloads / f"v{args.release}"
+source_destination.mkdir(parents=True, exist_ok=True)
+shutil.copy2(source_archive, source_destination / source_archive.name)
 report = {
     "executable": executable.name,
+    "installerRelease": args.release,
     "bytes": executable.stat().st_size,
     "sha256": hashlib.sha256(executable.read_bytes()).hexdigest().upper(),
     "selfContained": True,

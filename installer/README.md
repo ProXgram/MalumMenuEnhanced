@@ -8,6 +8,12 @@ checks the selected game folder and archive paths, preserves existing settings
 and unrelated plugins, backs up previous menu files, and rolls back on failure
 or cancellation. It never changes permissions or requests administrator access.
 
+Automatic installation supports Steam, Microsoft Store and Xbox App for
+Among Us 2026.9.29 on Windows 10/11 x64. Steam libraries are discovered from
+the launcher and its library manifests; users can also browse to the game.
+The installer verifies the game's identity, version and native architecture
+before making changes. Older 32-bit Steam builds are not accepted.
+
 ## Build
 
 Use the .NET 10 SDK:
@@ -48,10 +54,13 @@ Game compatibility and beginner instructions are in [installation help](../docs/
 ## Complete manual ZIP
 
 The manual package includes the verified BepInEx loader and the version 1.0
-plugin. It uses one extraction layout for Microsoft Store / Epic Games / Xbox
-App on PC. Xbox / Microsoft Store is tested; Epic Games is not yet tested.
+plugin. There is a Steam ZIP and a Microsoft Store / Epic Games / Xbox App ZIP;
+both use the same extraction layout and x64 loader for Among Us 2026.9.29.
+Xbox / Microsoft Store gameplay is tested; Steam and Epic gameplay are not
+yet tested. [Steam became 64-bit in this game update](https://github.com/Gurge44/EndlessHostRoles/releases/tag/v8.0.2).
 
-Run `python scripts/package-manual.py` to package the pinned archives with the
-bundled dependency notices. Its source inputs, checksums and licenses are
-documented under `ManualLegal`. Then run `python scripts/package-setup.py` to
-update the corresponding source archive.
+Run `python scripts/package-manual.py` for Microsoft Store / Epic Games / Xbox
+App, or `python scripts/package-manual.py --platform steam` for Steam. Its source
+inputs, checksums and licenses are documented under `ManualLegal`. Then run
+`python scripts/package-setup.py --release 1.0.1` to create the corresponding
+source archive for the updated installer. The mod itself remains version 1.0.
