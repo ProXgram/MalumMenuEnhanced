@@ -1,0 +1,29 @@
+{
+  "component": "UnityDoorstop",
+  "version": "4.5.0",
+  "repository": "https://github.com/NeighTools/UnityDoorstop",
+  "source_ref": "33dab9a6733862eb81869ff08431d9478b28784b",
+  "license": "LGPL-2.1",
+  "assets": [
+    {
+      "path": "UnityDoorstop/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/NeighTools/UnityDoorstop/33dab9a6733862eb81869ff08431d9478b28784b/LICENSE",
+      "sha256": "20C17D8B8C48A600800DFD14F95D5CB9FF47066A9641DDEAB48DC54AEC96E331",
+      "size": 26526
+    },
+    {
+      "path": "Sources/UnityDoorstop-33dab9a6733862eb81869ff08431d9478b28784b-Source.zip",
+      "source_url": "https://codeload.github.com/NeighTools/UnityDoorstop/zip/33dab9a6733862eb81869ff08431d9478b28784b",
+      "sha256": "A71789FFCB359F6A37C6D2C7BBDD0527231E9DB00BF46637693CFF88BA7FFB80",
+      "size": 114921,
+      "entries": 72
+    }
+  ],
+  "binary_download_url": "https://github.com/NeighTools/UnityDoorstop/releases/download/v4.5.0/doorstop_win_release_4.5.0.zip",
+  "binary_verification": {
+    "archive_entry": "x64/winhttp.dll",
+    "bundled_path": "winhttp.dll",
+    "sha256": "8C6CDBC38836DEE87E3368F5DE1994D7C0CCEBF29E4CE7ABA3C0981F9375412C",
+    "result": "matches official release byte-for-byte"
+  }
+}

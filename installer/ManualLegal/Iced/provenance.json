@@ -1,0 +1,15 @@
+{
+  "component": "Iced",
+  "version": "1.21.0",
+  "repository": "https://github.com/icedland/iced",
+  "source_ref": "601c40570d6c986c8e1a6a2e483dd2fdf5ade552",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "Iced/LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/icedland/iced/601c40570d6c986c8e1a6a2e483dd2fdf5ade552/LICENSE.txt",
+      "sha256": "93A47598376FD3F276B631E75149340087153C6FF1635A53C5790249E9124E2D",
+      "size": 1114
+    }
+  ]
+}

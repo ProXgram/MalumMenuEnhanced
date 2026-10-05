@@ -1,0 +1,15 @@
+{
+  "component": "Disarm",
+  "version": "2022.1.0-master.99",
+  "repository": "https://github.com/SamboyCoding/Disarm",
+  "source_ref": "8574010015c8c56bb7faad7e407c50b0abe9cc72",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "Disarm/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/SamboyCoding/Disarm/8574010015c8c56bb7faad7e407c50b0abe9cc72/LICENSE",
+      "sha256": "DFE5EF7511938E4D23B12C80F38E966A7993AEE60744AB72A947BED7B24963B8",
+      "size": 1066
+    }
+  ]
+}

@@ -1,0 +1,1839 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "scope": "Unmodified BepInEx755 Windows IL2CPP x64 loader dependency notices and source assets for the manual package. This does not certify game/platform compatibility.",
+  "loader_archive": {
+    "url": "https://builds.bepinex.dev/projects/bepinex_be/755/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755%2B3fab71a.zip",
+    "sha256": "3616D6A67F5F595973EC4AA7BD7EDAF7F799D5BB9926F7146A6DCC7B4ABF478F",
+    "size": 34323430
+  },
+  "components": [
+    {
+      "id": "AsmResolver",
+      "version": "6.0.0-beta.5",
+      "license": "MIT",
+      "repository": "https://github.com/Washi1337/AsmResolver",
+      "source_ref": "124e161a9bc0ebb83b4d97276ae3da3c9cfe2fc5",
+      "notice_paths": [
+        "AsmResolver/LICENSE.md"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "AssetRipper.CIL",
+      "version": "1.2.2",
+      "license": "MIT",
+      "repository": "https://github.com/AssetRipper/AssetRipper.CIL",
+      "source_ref": "06216e69825ccd6536dc17e9ca81c4d539ce9321",
+      "notice_paths": [
+        "AssetRipper.CIL/LICENSE"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "AssetRipper.Primitives",
+      "version": "3.2.0",
+      "license": "MIT",
+      "repository": "https://github.com/AssetRipper/AssetRipper.Primitives",
+      "source_ref": "d759b3db98bf2a1cb8c2181faf5d405610aac585",
+      "notice_paths": [
+        "AssetRipper.Primitives/License.md",
+        "AssetRipper.Primitives/Licenses/uTinyRipper.md"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "BepInEx",
+      "version": "6.0.0-be.755+3fab71a1914132a1ce3a545caf3192da603f2258",
+      "license": "LGPL-2.1",
+      "repository": "https://github.com/BepInEx/BepInEx",
+      "source_ref": "3fab71a1914132a1ce3a545caf3192da603f2258",
+      "notice_paths": [
+        "BepInEx/LICENSE"
+      ],
+      "source_paths": [
+        "Sources/BepInEx-3fab71a1914132a1ce3a545caf3192da603f2258-Source.zip"
+      ]
+    },
+    {
+      "id": "Cpp2IL",
+      "version": "2022.1.0-development.1452",
+      "license": "MIT",
+      "repository": "https://github.com/SamboyCoding/Cpp2IL",
+      "source_ref": "558ddd98642010897d54316b51fbaa7889fda093",
+      "notice_paths": [
+        "Cpp2IL/LICENSE"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "Disarm",
+      "version": "2022.1.0-master.99",
+      "license": "MIT",
+      "repository": "https://github.com/SamboyCoding/Disarm",
+      "source_ref": "8574010015c8c56bb7faad7e407c50b0abe9cc72",
+      "notice_paths": [
+        "Disarm/LICENSE"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "DotNetRuntime",
+      "version": "6.0.7",
+      "license": "MIT and bundled third-party terms",
+      "repository": "https://github.com/BepInEx/dotnet-runtime",
+      "source_ref": "e10df436edd020835a630a40796ba48222acb1d5",
+      "notice_paths": [
+        "DotNetRuntime/LICENSE.TXT",
+        "DotNetRuntime/THIRD-PARTY-NOTICES.TXT",
+        "DotNetRuntime/PATENTS.TXT",
+        "DotNetRuntime/UPSTREAM-6.0.7-THIRD-PARTY-NOTICES.TXT"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "Iced",
+      "version": "1.21.0",
+      "license": "MIT",
+      "repository": "https://github.com/icedland/iced",
+      "source_ref": "601c40570d6c986c8e1a6a2e483dd2fdf5ade552",
+      "notice_paths": [
+        "Iced/LICENSE.txt"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "Mono.Cecil",
+      "version": "0.11.4",
+      "license": "MIT",
+      "repository": "https://github.com/jbevain/cecil",
+      "source_ref": "04b44978799b4c5268955de2219cda45904aa397",
+      "notice_paths": [
+        "Mono.Cecil/LICENSE.txt"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "SemanticVersioning",
+      "version": "2.0.2",
+      "license": "MIT",
+      "repository": "https://github.com/adamreeve/semver.net",
+      "source_ref": "c52c9d4c5d34a6a3bb6ff45f7276d8b6e951a42d",
+      "notice_paths": [
+        "SemanticVersioning/LICENSE"
+      ],
+      "source_paths": []
+    },
+    {
+      "id": "UnityDoorstop",
+      "version": "4.5.0",
+      "license": "LGPL-2.1",
+      "repository": "https://github.com/NeighTools/UnityDoorstop",
+      "source_ref": "33dab9a6733862eb81869ff08431d9478b28784b",
+      "notice_paths": [
+        "UnityDoorstop/LICENSE"
+      ],
+      "source_paths": [
+        "Sources/UnityDoorstop-33dab9a6733862eb81869ff08431d9478b28784b-Source.zip"
+      ]
+    },
+    {
+      "id": "MonoModAuxiliary",
+      "license": "MIT",
+      "repository": "https://github.com/MonoMod/MonoMod",
+      "source_ref": "a1b82852b2574742776af08818487b90b0bfab93",
+      "notice_paths": [
+        "InteropAndDetours/MonoMod-2024-LICENSE-MIT.txt",
+        "InteropAndDetours/MonoMod-Embedded-Iced-LICENSE-MIT.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/MonoMod-source-a1b82852b2574742776af08818487b90b0bfab93.zip"
+      ]
+    },
+    {
+      "id": "Il2CppInterop",
+      "license": "LGPL-3.0-only",
+      "repository": "https://github.com/BepInEx/Il2CppInterop",
+      "source_ref": "6d9007c18cc8440830379c5e1d5714085e7ec577",
+      "notice_paths": [
+        "InteropAndDetours/Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/Il2CppInterop-source-6d9007c18cc8440830379c5e1d5714085e7ec577.zip"
+      ]
+    },
+    {
+      "id": "MonoModLegacy",
+      "license": "MIT",
+      "repository": "https://github.com/MonoMod/MonoMod",
+      "source_ref": "8fea48428622be858dd4f48b20ba1bf96ba09894",
+      "notice_paths": [
+        "InteropAndDetours/MonoMod-2022-LICENSE-MIT.txt",
+        "InteropAndDetours/MonoMod.Common-LICENSE-MIT.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/MonoMod-source-8fea48428622be858dd4f48b20ba1bf96ba09894.zip"
+      ]
+    },
+    {
+      "id": "Dobby",
+      "license": "Apache-2.0",
+      "repository": "https://github.com/BepInEx/Dobby",
+      "source_ref": "888d971214900374edbca6206fad6ded8a2c1311",
+      "notice_paths": [
+        "InteropAndDetours/Dobby-LICENSE-Apache-2.0.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/Dobby-source-888d971214900374edbca6206fad6ded8a2c1311.zip"
+      ]
+    },
+    {
+      "id": "HarmonyX",
+      "license": "MIT",
+      "repository": "https://github.com/BepInEx/HarmonyX",
+      "source_ref": "97b2a2e9cecd6d0c757da4dbb696abaff9163faa",
+      "notice_paths": [
+        "InteropAndDetours/HarmonyX-LICENSE-MIT.txt",
+        "InteropAndDetours/HarmonyX-Upstream-Harmony-LICENSE-MIT.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/HarmonyX-source-97b2a2e9cecd6d0c757da4dbb696abaff9163faa.zip"
+      ]
+    },
+    {
+      "id": "CapstoneBinding",
+      "license": "MIT",
+      "repository": "https://github.com/ds5678/Capstone.NET",
+      "source_ref": "b90e380c14e857865c94a355954236e678bd557c",
+      "notice_paths": [
+        "InteropAndDetours/Capstone.NET-LICENSE-MIT.txt",
+        "InteropAndDetours/Capstone-Native-Runtimes-LICENSE.txt"
+      ],
+      "source_paths": [
+        "InteropAndDetours/Capstone.NET-source-b90e380c14e857865c94a355954236e678bd557c.zip"
+      ]
+    }
+  ],
+  "loader_files": [
+    {
+      "path": ".doorstop_version",
+      "sha256": "75A2F501000D4FE28F74BC7EE66DAE5581959D28B6C44F0C1B0C05CD5BA261E6",
+      "size": 5,
+      "component": "UnityDoorstop"
+    },
+    {
+      "path": "BepInEx/core/0Harmony.dll",
+      "sha256": "6C898933B52149E8BCF6722305C7E4D94ADD47C9E53B364096F91721624C0877",
+      "size": 264192,
+      "component": "HarmonyX"
+    },
+    {
+      "path": "BepInEx/core/AsmResolver.DotNet.dll",
+      "sha256": "045BCDF32427F9BD39BEE2620C470372583935C8E89B360931E467DD191D46D1",
+      "size": 561664,
+      "component": "AsmResolver"
+    },
+    {
+      "path": "BepInEx/core/AsmResolver.PE.File.dll",
+      "sha256": "8246433A1A6FB4C012C1814ACEE8A4FF24F3A4FAC593569F6A1E343E68C9D8EE",
+      "size": 40960,
+      "component": "AsmResolver"
+    },
+    {
+      "path": "BepInEx/core/AsmResolver.PE.dll",
+      "sha256": "6BA6D56BF5FD3DD18233B56606A7ED1D42B8C93977B5375716771BF13EA36A1E",
+      "size": 397824,
+      "component": "AsmResolver"
+    },
+    {
+      "path": "BepInEx/core/AsmResolver.dll",
+      "sha256": "64B50030B34654F12805EC4D2848551E431C5F0BCD65CD70D6FE2845F715FB12",
+      "size": 67584,
+      "component": "AsmResolver"
+    },
+    {
+      "path": "BepInEx/core/AssetRipper.CIL.dll",
+      "sha256": "1EEFF8D76DDA5D65E5145AB0D43A3DAC672E096E5692C47E0382EBB3C7C817F9",
+      "size": 45568,
+      "component": "AssetRipper.CIL"
+    },
+    {
+      "path": "BepInEx/core/AssetRipper.Primitives.dll",
+      "sha256": "681BA26FD356D9263FDF6AFEB1B8F8506802A9503FFA80C9D21E0C4A46743A28",
+      "size": 29184,
+      "component": "AssetRipper.Primitives"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Core.dll",
+      "sha256": "DD8DD33CAB8B383AF4066A2D0ABDC3F290E7DCFA50BC322602B607135EFBEC78",
+      "size": 136192,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Core.xml",
+      "sha256": "709D06982DED0E2AEB5B7ABA5CB224331DEA01102368FDA37A7C5BE88B65BB0E",
+      "size": 90254,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Preloader.Core.dll",
+      "sha256": "56F708EBE00378F9A4FCFBB34E2F9A8A24C51F7DF3FA33EABB3C61C69AF513ED",
+      "size": 53248,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Preloader.Core.xml",
+      "sha256": "F7E68941A96A6BBB42237B428F0B38077AC139597AC24C7CBB51E661F51AE3F1",
+      "size": 16386,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Unity.Common.dll",
+      "sha256": "35BCF26BFAF2379A6EC5877A4DD599943B5AE3436F4DB6F24E4A2CCA83C342B3",
+      "size": 13824,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Unity.Common.xml",
+      "sha256": "D3164C64D07FFFBD4E5A28DD4A7201D4971BF15F5D471FC919D4707009FC9114",
+      "size": 1196,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Unity.IL2CPP.dll",
+      "sha256": "63F05053E533CAF73EC12D9429873CA2D97897B99DE551E9F4AC8DC81510E6DA",
+      "size": 80896,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Unity.IL2CPP.dll.config",
+      "sha256": "EA4436344D4CC4C29F3382655C99828ACE3DF659107CB2E6B985227027E48CD6",
+      "size": 456,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/BepInEx.Unity.IL2CPP.xml",
+      "sha256": "1DC768A64B78E9A409D3EA420E62E884C883ED488EECF204B71C2EF4E337AD31",
+      "size": 1846,
+      "component": "BepInEx"
+    },
+    {
+      "path": "BepInEx/core/Cpp2IL.Core.dll",
+      "sha256": "A7AE866298472BFA5176C1B5B71ADFA9FE6E2F1DEEF7B8D50F063C0E2C0BA258",
+      "size": 394240,
+      "component": "Cpp2IL"
+    },
+    {
+      "path": "BepInEx/core/Disarm.dll",
+      "sha256": "40E804C35369825884534734725D06831A534759478C8D9F3F908D80779A1A93",
+      "size": 139264,
+      "component": "Disarm"
+    },
+    {
+      "path": "BepInEx/core/Gee.External.Capstone.dll",
+      "sha256": "18F9CFBFD10B479143A46B3E417CCFCE4A62D4C2770DA9ED12D553A0B326302C",
+      "size": 295936,
+      "component": "CapstoneBinding"
+    },
+    {
+      "path": "BepInEx/core/Iced.dll",
+      "sha256": "F058C01321B4CDFC9B9151879E88E59571C8D0BA176FBCF95BC936A8F3D073ED",
+      "size": 1896448,
+      "component": "Iced"
+    },
+    {
+      "path": "BepInEx/core/Il2CppInterop.Common.dll",
+      "sha256": "7445F52B59C4141D8F627D93B021DE3D958D5EE1D18DC52236E0ED19E97A1DA8",
+      "size": 41472,
+      "component": "Il2CppInterop"
+    },
+    {
+      "path": "BepInEx/core/Il2CppInterop.Generator.dll",
+      "sha256": "D0896363C83A599AE2F2C30E59198DD8133A45C9D6B8C3883D481B8F5B7E07A5",
+      "size": 219136,
+      "component": "Il2CppInterop"
+    },
+    {
+      "path": "BepInEx/core/Il2CppInterop.HarmonySupport.dll",
+      "sha256": "AC580929EFA69EA785E71E9405A7A10C41B920024A6DD1B84095ED917BD1C68A",
+      "size": 26112,
+      "component": "Il2CppInterop"
+    },
+    {
+      "path": "BepInEx/core/Il2CppInterop.Runtime.dll",
+      "sha256": "302F0B4A229266D8747A2B7C9EA4BA16E15DD6ECABCF0D575C6F0487EC8DA82E",
+      "size": 284160,
+      "component": "Il2CppInterop"
+    },
+    {
+      "path": "BepInEx/core/LibCpp2IL.dll",
+      "sha256": "DD3BD5417CAC3FD203B906A90DBAE6719136E61F43C2B4EED55F56242BB10A14",
+      "size": 312320,
+      "component": "Cpp2IL"
+    },
+    {
+      "path": "BepInEx/core/Mono.Cecil.Mdb.dll",
+      "sha256": "61637F9940E5E336571CBF945BE0F36D6D6050E06288DF0F0232D93B26F0BDE7",
+      "size": 39424,
+      "component": "Mono.Cecil"
+    },
+    {
+      "path": "BepInEx/core/Mono.Cecil.Pdb.dll",
+      "sha256": "A5249A04AD8FD7DFD47E4D0A620AED0F7EB6051E1DDEC102C541CA3E12F6E2A8",
+      "size": 89600,
+      "component": "Mono.Cecil"
+    },
+    {
+      "path": "BepInEx/core/Mono.Cecil.Rocks.dll",
+      "sha256": "273292BABD45F9F34DE5054BD9CDFE1D859A7DBF6F4AD5974FE4EAD70698ED5B",
+      "size": 24576,
+      "component": "Mono.Cecil"
+    },
+    {
+      "path": "BepInEx/core/Mono.Cecil.dll",
+      "sha256": "769A59793D4B8885BBBFBC5AEE8F57A0D4E34D275C56C60C03994309B87F67E9",
+      "size": 356864,
+      "component": "Mono.Cecil"
+    },
+    {
+      "path": "BepInEx/core/MonoMod.Backports.dll",
+      "sha256": "CDD6E9F7BCDB98D2C002F63BFBE85AE80EA36261190A741E64283D769A6C6502",
+      "size": 29184,
+      "component": "MonoModAuxiliary"
+    },
+    {
+      "path": "BepInEx/core/MonoMod.ILHelpers.dll",
+      "sha256": "0081403BDCEF3340F78C7CCDED0BE6AE0507B397EE8B9980B44F01BF9F93AED1",
+      "size": 4096,
+      "component": "MonoModAuxiliary"
+    },
+    {
+      "path": "BepInEx/core/MonoMod.RuntimeDetour.dll",
+      "sha256": "1B3D55F53CB9F9F2550DAED4DFD300B247D71698A0ACE82BC7B9FF38D563594F",
+      "size": 112640,
+      "component": "MonoModLegacy"
+    },
+    {
+      "path": "BepInEx/core/MonoMod.Utils.dll",
+      "sha256": "72A5B4249985873D7ECB160CBBED7A1E6540A38EE7618C72C64B9CB068C1438A",
+      "size": 193024,
+      "component": "MonoModLegacy"
+    },
+    {
+      "path": "BepInEx/core/SemanticVersioning.dll",
+      "sha256": "A5B57607225A0EBDE049E93469F49E5B2D07A7D602A03864CE3A72CCF57103A2",
+      "size": 34816,
+      "component": "SemanticVersioning"
+    },
+    {
+      "path": "BepInEx/core/StableNameDotNet.dll",
+      "sha256": "280373B93A140395489D714703AC61F8D02C7AA07AC6E34024F8F0E26901325A",
+      "size": 28160,
+      "component": "Cpp2IL"
+    },
+    {
+      "path": "BepInEx/core/WasmDisassembler.dll",
+      "sha256": "F837036E0DB02D6F3DDE76DE573FD9A847A1175D61818607E40C46952F5C66C0",
+      "size": 22528,
+      "component": "Cpp2IL"
+    },
+    {
+      "path": "BepInEx/core/dobby.dll",
+      "sha256": "8015DE7D867245A1095D13947A63763878E4CF5FD3D3089B63CC39200B055DED",
+      "size": 205312,
+      "component": "Dobby"
+    },
+    {
+      "path": "changelog.txt",
+      "sha256": "B737FF89611C8DA5D6EF409A85A56E5DE45B5B37561605D68D0417A6A5FB65F9",
+      "size": 3838,
+      "component": "BepInEx"
+    },
+    {
+      "path": "doorstop_config.ini",
+      "sha256": "7DAEBB02054747FAEE66C875A778E0E8D54DAD24DD460E1FB69AA31378D9EA8F",
+      "size": 1637,
+      "component": "BepInEx"
+    },
+    {
+      "path": "dotnet/.version",
+      "sha256": "4052AB33B00D0411FC9CE103AC9D51564CF8630FDDB7464D82DDCC168D4D302C",
+      "size": 49,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Bcl.AsyncInterfaces.dll",
+      "sha256": "5705D245072D3EB78400547B32147DBB6E2C8B02BA8BDA76729798F5EFDEAECB",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.CSharp.dll",
+      "sha256": "316A247FD993E03F0A4D1E7ACB89DC5BC602555B7078BFB60E11BA2E24D960C6",
+      "size": 1045120,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.DiaSymReader.Native.amd64.dll",
+      "sha256": "3AECC22ECECF784182883EBD2C2BF60BCDB25CC209DD64C32800B845EE8966E0",
+      "size": 1813896,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "sha256": "9CCD830351AA28BC683D4F8D1CEFD9E724161F972D25BFB64EEE5BF55C48C5E3",
+      "size": 43632,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.DependencyInjection.dll",
+      "sha256": "2AA8182B5356A8CC5C35FC3641A87E814857D8D9BE399AC78F260343754D09E0",
+      "size": 81536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.Logging.Abstractions.dll",
+      "sha256": "D575C9D1543CA726CE14DBDFFD103E93EA527CD46BB28316DA1F4122DBC55D56",
+      "size": 62064,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.Logging.dll",
+      "sha256": "183650081B551DFAD967A7CBF79946A229CB79458B8D04A12DB7C44B03BB9AB7",
+      "size": 44656,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.Options.dll",
+      "sha256": "786112CB2F6646EF1170219A8C0BB813C9F14A6781E67C6266414F55A679565D",
+      "size": 59008,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Extensions.Primitives.dll",
+      "sha256": "8CE9A85927EC7507B11FFE90080E7A811D51304A9E8B1DA20C350159BA403902",
+      "size": 40048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.NETCore.App.deps.json",
+      "sha256": "879DC0CB9C9A7A41681E399FC4F18C15EF1AC9A3410F68B94A8D13DD0C6C391C",
+      "size": 32783,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.NETCore.App.runtimeconfig.json",
+      "sha256": "1B7AA545D9D3216979A9EFE8D72967F6E559A9C6A22288D14444D6C5C4C15738",
+      "size": 159,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.VisualBasic.Core.dll",
+      "sha256": "5897C9FC711AEB67F0C0CB1DCF205035CD48EA6AA6E8C9A9DFD99874E7EF9EB1",
+      "size": 1245312,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.VisualBasic.dll",
+      "sha256": "2EA09B137ECA6D0AAA01FC6746B56242F9BD4F9659A7FCDC78E64162D58752BB",
+      "size": 18048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Win32.Primitives.dll",
+      "sha256": "E8F2611B0CDC077D5600CCE9E02C1BAC42A54C3574F6DC16C478B3E6A0AE217C",
+      "size": 26240,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/Microsoft.Win32.Registry.dll",
+      "sha256": "E927CBBA4F097B165BC07B85DC8E6B8BAD6DF17FC1035F2AB54DAC844BF9C922",
+      "size": 87680,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.AppContext.dll",
+      "sha256": "50646E8365BB6774C96843E2050607DAA727FE01C5AC0DC33F20078BBCA17800",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Buffers.dll",
+      "sha256": "FCDD06FC669315988D2A27A6A2E78DEB03DFB5550C277B328D90A8B26ED81ADF",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Collections.Concurrent.dll",
+      "sha256": "1314F85D88A247A8D3FC4A41F1735AF31E5E0C5324E93E3B167B331B46DE8019",
+      "size": 246912,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Collections.Immutable.dll",
+      "sha256": "89743BC3E0B95132470C2C699ADD5CB5466FE7FB938725E09612B9BEE526EB9F",
+      "size": 666240,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Collections.NonGeneric.dll",
+      "sha256": "AAD04CCE314CED4070B457A1638FA9BD85160B4148582483B4E317D7F2F92CEB",
+      "size": 100992,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Collections.Specialized.dll",
+      "sha256": "6B3143AB53EF90285DB5C30DE82EAB03A78FF83CC53F62730408A3EB593FF026",
+      "size": 95360,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Collections.dll",
+      "sha256": "628A180F7C368A1011608B422DD1C8DE37064F21B59CBC26BD62E9B065C2E7BE",
+      "size": 264832,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.Annotations.dll",
+      "sha256": "C72AA4EFBB17D9C5C8BC03A69B963644652DA5B5B5B6CC8489D75379026511D2",
+      "size": 187008,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.DataAnnotations.dll",
+      "sha256": "ADE682D3E52B24E47D7B14B1E71AEB8DFF77F5063006E5CB1BF0CAF03629DB1A",
+      "size": 17544,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.EventBasedAsync.dll",
+      "sha256": "F2533CB4E274CE9DFE702EA34AFFB2E32B220EE714FB8DC118B2339519227131",
+      "size": 38528,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.Primitives.dll",
+      "sha256": "ADAC36FEC73388CDBB349527BD81B84C0B88EC2B381B81CC97EFB4549CD471FD",
+      "size": 75392,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.TypeConverter.dll",
+      "sha256": "7126B16695D5A2E4A593CEC1B7CAB8EC10DF5CBD9F31F5FF7CC25671E41E82CF",
+      "size": 744576,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ComponentModel.dll",
+      "sha256": "69E9429B032C853FCABD9DFC3BDF13701AC8C730CA40E1AFC949F935932846CD",
+      "size": 18584,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Configuration.dll",
+      "sha256": "2C724A2A5B4E6926C5EBB56ADB3F33F27067E2E3D319E814A8537B9A579B32E1",
+      "size": 19584,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Console.dll",
+      "sha256": "82F483F5B349F8F4F0BC6C651D1FAA2E78DD3F01528DC72C7AC387BA7246AE06",
+      "size": 156824,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Core.dll",
+      "sha256": "8B05CC2DFD7491B709CAAB31C5FA5D58DA1BC321210536360AD20D19BE39E508",
+      "size": 24192,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Data.Common.dll",
+      "sha256": "48D8145EF5E96C016ADB303BD59A34BACDA6F94BAEEDD9DC548DED61DEFEBAB1",
+      "size": 2983552,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Data.DataSetExtensions.dll",
+      "sha256": "0F5E8441CE28F0771F8FDE9A5D1C6B65E6E25DFBF2C1B24420C2DFECE3A29631",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Data.dll",
+      "sha256": "5566075CDA9658C248D506AEA051BCC120C94005BF14CF4BCC1B23FA7257F9EE",
+      "size": 25752,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.Contracts.dll",
+      "sha256": "ECCDAAAC1B9F2AF83A9F6B49786996D334F6CE7133C1C37C4647065B49EA8A63",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.Debug.dll",
+      "sha256": "606E24A3BBC11942914FF4F60C3007FA737E0D5A2F4A5C021E0238F5403B66FE",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.DiagnosticSource.dll",
+      "sha256": "A939F33CCEA3A6731FDFB7791D32C3B518864F243211E39B6156DBB21CEB04BC",
+      "size": 380568,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.FileVersionInfo.dll",
+      "sha256": "B9E7B0073C546037A4F28439E8C3800C93F442E22CA706790D90AD71E7C319B6",
+      "size": 35456,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.Process.dll",
+      "sha256": "98C318970936E1AC79CDE888E4CBFA455D91348881931FEFA6C84A2CB084D5E3",
+      "size": 290432,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.StackTrace.dll",
+      "sha256": "7B7D3F408AE1AEFA8C78F9AF5E2300546A08BA49E198247FB6538B13BF0E5B0D",
+      "size": 36480,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.TextWriterTraceListener.dll",
+      "sha256": "655D26FCF394B8FF01C2E3ECC8A40271903C02A7E251EBF4D58B8D291EA5F488",
+      "size": 60544,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.Tools.dll",
+      "sha256": "89B601E94E5BFD18C573DCBDD8AB2F6FA67F5C6B88E9B32888D79D70A2A3B2BD",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.TraceSource.dll",
+      "sha256": "A9138F26B1D866FA7179EAB0962D7B90DF61B39DBC088DDC951EAA0AB146B0A5",
+      "size": 133248,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Diagnostics.Tracing.dll",
+      "sha256": "5407D3AC2FBDB47A25C34E84A7B679EC4F76791AE4C7CB7CC6312C20FFD04094",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Drawing.Primitives.dll",
+      "sha256": "D2AAFDB04C1AF629CDEB2798A189B23840CCF0630B8782920738CD928BC59121",
+      "size": 130176,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Drawing.dll",
+      "sha256": "5176D9CBEE941DED09DC6C1AB8255241ABD07DCAA8B177F0C7F6FC1E99F498B3",
+      "size": 21120,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Dynamic.Runtime.dll",
+      "sha256": "2A930D63F7020099F6B61733147AF4E38CBC3F80EA6EEA93C79421103751E6AA",
+      "size": 16536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Formats.Asn1.dll",
+      "sha256": "26173E7E2970904164E8E3374EB225351453BA4D06D7CC3762ED2E610F9F8A7F",
+      "size": 197248,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Globalization.Calendars.dll",
+      "sha256": "9DF5237E78ABAE0EFD1D90849B6A94C88A73C5DA5CAB3302407472F886EAF057",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Globalization.Extensions.dll",
+      "sha256": "51EAA10853A4672F0ED9E673FF8D7AD154514A26A8C4B990C313F61787A9FC62",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Globalization.dll",
+      "sha256": "FF51C19E14E496EBD3C93A661190E1D6ED99D3F2CC7BEE4F9A826B7A46332E5A",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Compression.Brotli.dll",
+      "sha256": "DC1F71AFBC55F6A6C135CD135B89E461C580B73C619DAAAA91EF266EC0E4BCC1",
+      "size": 72856,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Compression.FileSystem.dll",
+      "sha256": "FC11B8625F1E1A5382274494FE0F2459D9E67951217DDB965BA384B8F84A6001",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Compression.Native.dll",
+      "sha256": "B4E65C507F48F28E96E69247E47093B35D0B1A376AF4C052D504983E9C26AE44",
+      "size": 822936,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Compression.ZipFile.dll",
+      "sha256": "6237BBAE8BCD8E34273CA5AA59685701FAD22B6B6FCFF3E7DAE277942F254355",
+      "size": 39576,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Compression.dll",
+      "sha256": "2C70DB9227451B97F5F2C9CAD7E4A434895983450E5B653082C29D69AAF25292",
+      "size": 266880,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.FileSystem.AccessControl.dll",
+      "sha256": "544DEEE0E7663D4C5D6091F1B2197ED27E2FC5222254682B3BFB76A01EAAA8BE",
+      "size": 93848,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.FileSystem.DriveInfo.dll",
+      "sha256": "CFC334386E491A0FA41409D2E7CFE9C8B27E18FA3193D101916F92D93D975984",
+      "size": 42648,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.FileSystem.Primitives.dll",
+      "sha256": "42A9D51D8FE5166FEF82AAC23C820ADCB354B822B5B74728FFB0E79093EA0D3A",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.FileSystem.Watcher.dll",
+      "sha256": "DDBA64E364F20EF1472D39BBAF988073276C4F2ECF72B4F8196388DDB20BCC11",
+      "size": 72344,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.FileSystem.dll",
+      "sha256": "91E0348A48B0D9A69E0FD8DB54B1BEE3B9465AE13F7FD95FBB4B25BDE3F80C16",
+      "size": 24192,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.IsolatedStorage.dll",
+      "sha256": "A79B19F37DB340184F6A53A82B0E3410D7698BF1736EC479224EDF7EB3D508F9",
+      "size": 83608,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.MemoryMappedFiles.dll",
+      "sha256": "958EB5C597368F194D334D0BFF479706C83A8A80C992EAC3B9BA5B94E5ECFE4C",
+      "size": 69272,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Pipes.AccessControl.dll",
+      "sha256": "D434A73F0B9368922BDC7D57E0BF7A80E3566CBD3A29665F4D868E5AAC1A1677",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.Pipes.dll",
+      "sha256": "FB75C1DD8C3A77641AB28058D32738551FCA2E5EC52FA6C123E3B42E5639126C",
+      "size": 136344,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.UnmanagedMemoryStream.dll",
+      "sha256": "CF9C47E009E08695C200647DDF2B6757A8375FE3A74830137143C989864EBFD9",
+      "size": 15512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.IO.dll",
+      "sha256": "BB50FF8A1F9AFFD53107DDDC78A33CB656988D6842F5AAC628CECB0B15F634AB",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Linq.Expressions.dll",
+      "sha256": "DF96691089EA41CB5A8DAFFC5E95324A5A5F3516083BFF2448A377FBFD61E918",
+      "size": 3857048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Linq.Parallel.dll",
+      "sha256": "920B3F087C615A7AD0057925B3FA6D9720690123075A6FE2AF07203F26786656",
+      "size": 849048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Linq.Queryable.dll",
+      "sha256": "BA5E7F66011AC7F215518D46FF2A13F646489D5A89334C33D6B9C6F697E3E2D2",
+      "size": 228504,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Linq.dll",
+      "sha256": "52E1CFBD54DE414A2B3C44DAD40BBBA10F72A8F9BA9CEE68323BDA0B4F417F69",
+      "size": 537752,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Memory.dll",
+      "sha256": "108F424CA216F2D057C722F686BCC25DBC02B221B2CBCEEAE21DDB456FD97EAF",
+      "size": 173720,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Http.Json.dll",
+      "sha256": "D0B4BC46949A090C1F30DFF8834EFDD7AB2CAE8FB888B60032F180E5C179AEBD",
+      "size": 82072,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Http.dll",
+      "sha256": "5B1CB786C6DA2C36E86F2079EEB22081C35BF951D5F286AE4A83154A3071EDFF",
+      "size": 1801880,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.HttpListener.dll",
+      "sha256": "4EFAB60ED73E5AE823610FDCD2DC66CC02C6C44244EEDFA8CE424BE7F62488AA",
+      "size": 639128,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Mail.dll",
+      "sha256": "866B26900D30A29B174213E217E21A49D2BFD1E99B21E5AB33EA8E4D5AA1C88C",
+      "size": 551576,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.NameResolution.dll",
+      "sha256": "BC9F07B05893C03CD47FBC71176C3E89287A493EEA4A430D74193C841463181D",
+      "size": 101016,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.NetworkInformation.dll",
+      "sha256": "4310EE56787D5CB17A908C6313C7D7C0BE7E66772AD43DCD384CC12940793067",
+      "size": 150680,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Ping.dll",
+      "sha256": "76D2A89CFEAE149C1CEEA891B563527CAD6C4823E01185AA25824CF1C0AA931C",
+      "size": 79000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Primitives.dll",
+      "sha256": "421FDCBD8EB0A744424995DBCDEE2E72ECA9EF1BFCDDB53187FB624499DCCC51",
+      "size": 214168,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Quic.dll",
+      "sha256": "78C61D0EFDECA3DD6929E80083798DCDA9B557183F37D556397DAAD7241F83E7",
+      "size": 291992,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Requests.dll",
+      "sha256": "9990E35B0AAFBDD58ACC4ED76DB1F4F8639C0F9CC9F02AA38B8FBBE8D173F340",
+      "size": 348808,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Security.dll",
+      "sha256": "F591CE881A45FE77608F8B301853218DEC7CACCC7F1007A3C6D59EEEC8F8C7AE",
+      "size": 682136,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.ServicePoint.dll",
+      "sha256": "15A4182BE2F2D7613F5240FD7805E197CD28B6E5DC85FF56A18438D2ADC0AE5E",
+      "size": 37000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.Sockets.dll",
+      "sha256": "0D00C303E305949A1543658E9E15477FBF6EB66B663C4CD2CF8C037E0265E7D7",
+      "size": 506520,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.WebClient.dll",
+      "sha256": "2DAB6B8B9EFA86A7F0AF51CCFBCFD135D309E648C4D43223923D87F7BA983FED",
+      "size": 166552,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.WebHeaderCollection.dll",
+      "sha256": "A62CB21ACCEBBB410308073BD1D7B177D91365AAF5AF63324E7446D4FD6155C4",
+      "size": 60568,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.WebProxy.dll",
+      "sha256": "21A3230F6D7A3D0BD307BE718ADE71E8F12D25D0C1F468D040F12F053680DE2E",
+      "size": 31896,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.WebSockets.Client.dll",
+      "sha256": "9C21E9AC3CAA811D28EC68B063079EEF2CF3AE889855D1D989360F53994ECA3E",
+      "size": 75928,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.WebSockets.dll",
+      "sha256": "2D92421344665A67179B8E0A6AD2FB74C233EC45673EB3CAB1E20C1CCEFD206C",
+      "size": 181400,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Net.dll",
+      "sha256": "50E883AE0CF45CD8D35EE4CDB83DBC3B6DA8284AFC4EF53352CCBA502FEBE6A2",
+      "size": 18048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Numerics.Vectors.dll",
+      "sha256": "5B4FE8F00F2C18936CE3BA3C22BA351E0D886B6BF071BB19EA1DEEDCE4D3624B",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Numerics.dll",
+      "sha256": "FB8C60330243A677CFF36E3EBCFD3DFB5AC0F2D739F92C7DCEBCF5C8C9E62DA2",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ObjectModel.dll",
+      "sha256": "EE2A487CD7ABE5E08207426240E5EB981902EA894BAA6767A7F786BE8311E538",
+      "size": 90776,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Private.CoreLib.dll",
+      "sha256": "2CAA46D2AE726E135592033B6C682232A08698C23DBD1A9207F86C4CCA081AD7",
+      "size": 10631320,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Private.DataContractSerialization.dll",
+      "sha256": "913461FDCA318C69540EC544619A52CF4865626DFD2054EBE075ECFA82BFF1EA",
+      "size": 2074256,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Private.Uri.dll",
+      "sha256": "4B80767452017DA1726302DF729D9918C95BA8B5B05EE75A4807B17D88EF96A6",
+      "size": 252568,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Private.Xml.Linq.dll",
+      "sha256": "5166BFE1A33746892B87F09CCAD542396F9A23ED4A5E79427E3DFE764FC1AD42",
+      "size": 405144,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Private.Xml.dll",
+      "sha256": "38A26C1F6510BE0F2371FBDBCC590B3D44FDB2B76807785FDDBE52336630F66A",
+      "size": 8504448,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.DispatchProxy.dll",
+      "sha256": "86B297AE56EC792107F2649A4E5C54120064D88F40E5A4541331F653F7AC1E83",
+      "size": 66200,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Emit.ILGeneration.dll",
+      "sha256": "59E813FA039D140323B7BC2E51DEF90AA141C7F02CF45B6CAB45B9829DB9B993",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Emit.Lightweight.dll",
+      "sha256": "C63FBD51C1D794F1551E096A5A8ADFCCEDFBA4B6EE0B6AEAF966BF6EBB1A7223",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Emit.dll",
+      "sha256": "06B2AAB6E04FF1F2250C0636B90355D73E39E5A2B0ADA6065B475282C28153E0",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Extensions.dll",
+      "sha256": "71CAA3D1D16BF22AC4CD1672D200ACE3225BABCE1E2E889200F15EFA734B6222",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Metadata.dll",
+      "sha256": "695365A6FB1C1B7762AE925BCBB5BD2827CED11C750D15DC5F88218D6FC4D8DF",
+      "size": 1130648,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.Primitives.dll",
+      "sha256": "1DF428D05437F42DC1EE52EF3BE19A751CCE5A577B130425C8137FADE97C5CCC",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.TypeExtensions.dll",
+      "sha256": "5BD856CFA8F30BEDDF9DB302F6ACF851F63661C7C753B9088266F9AC8DD09973",
+      "size": 33432,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Reflection.dll",
+      "sha256": "36194CB5F9821D7712E66C222E6A4D6DE7557344EAD607EEA6A6FF55D8A0A4F1",
+      "size": 16536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Resources.Reader.dll",
+      "sha256": "1CF8DAF7B1D834D48E95AF0E92D281ED18F0C40036008073AC61418F44B1C1A4",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Resources.ResourceManager.dll",
+      "sha256": "BEF18F0CEDE69F1F3B889D7BF1BD00E90B7136CD9C4CE0D85FAE23B6F952885C",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Resources.Writer.dll",
+      "sha256": "752F89C066FC0D872654C6501DD6B89FA6E1A4FB649AB19BE00AC59A5D02052F",
+      "size": 45208,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.CompilerServices.Unsafe.dll",
+      "sha256": "1F1269F45ED627B6DA1D02E668A5846FC8D89FD54BA541458FE3206CD261D4D3",
+      "size": 22680,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.CompilerServices.VisualC.dll",
+      "sha256": "A4645622DB0FC9D3BC239B5136472C17CE738BECFC8C9875DC9CCFD1C153E51A",
+      "size": 20120,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Extensions.dll",
+      "sha256": "F17FE826509283F6BDEF0789EEC192FBC811DA6A142B19F9E14E25A79D4C2403",
+      "size": 18048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Handles.dll",
+      "sha256": "581DD1B50B99F685B62F0CD79C7E0629B3841E371850686E78EB68D695E52633",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.InteropServices.RuntimeInformation.dll",
+      "sha256": "00B0F34E391F998E0DF534D32E7ABCB62D524E84BD3276C8526924231EE22D6A",
+      "size": 31896,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.InteropServices.dll",
+      "sha256": "833CB735BA01762C8EC501D20936081C0FD75F267F45B4FE3C86BFD0321885C6",
+      "size": 51864,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Intrinsics.dll",
+      "sha256": "7345861DB1327A1B748690E6952B1A153EF1340C36B9FB9390D149FE04148F85",
+      "size": 16536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Loader.dll",
+      "sha256": "4A3343C5602A5244883878DD2A2E3A354975094557BE888B093E08255E3B802B",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Numerics.dll",
+      "sha256": "19A0C0768273026E7CC01631ED0827665D1B603F10F536D786D8AB11B169B93B",
+      "size": 221848,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Serialization.Formatters.dll",
+      "sha256": "33C6D92A36190E0D3ABE51746C8828A189D594159A636FF88BF76F51B057A416",
+      "size": 322200,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Serialization.Json.dll",
+      "sha256": "670E0C3A4969B800835B65780639EA85EF68A69C8F1B2D015863EEC96C2A8F1C",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Serialization.Primitives.dll",
+      "sha256": "871FB41960257B1D1DC6F87E00B5DE822D9288C8B93E3F3E5B17BD25924BD80B",
+      "size": 28824,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Serialization.Xml.dll",
+      "sha256": "47586D335A3DBCF691043DF4670C741091B62B4F59E619F5A3CDC876EAB08521",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.Serialization.dll",
+      "sha256": "70757055150731E3451F81E22F5707B0BFDFF98C267B9E5783E9D4A6CD60EE4D",
+      "size": 17536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Runtime.dll",
+      "sha256": "5EE7ED5290D8B1F8E47854D4A9CAEFF68A503DEEACE7B36451988F80B5141504",
+      "size": 42624,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.AccessControl.dll",
+      "sha256": "219A62E07AD0C1D56B1614D28B0B13BDBFBFCF6DADECF1E5FF69D858251DC3BB",
+      "size": 215192,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Claims.dll",
+      "sha256": "18579E03CB56973CB460CBD7C501FA3AA246EEDCC0F02B4F6775AFF286DB68C8",
+      "size": 94360,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.Algorithms.dll",
+      "sha256": "667EF15B3831A6D7BC1A940911E428FE1344182D9FB14EFB5D429107BDA57D85",
+      "size": 805016,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.Cng.dll",
+      "sha256": "A719D3969BF9B6DD451D66B7E046458EA945D8338B976E350C4B6813269C404C",
+      "size": 485528,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.Csp.dll",
+      "sha256": "3B7A3937F3FB40061A0D6E38B3F493A337E300C92746B8D2FC7B8CF1D9B59A4C",
+      "size": 189592,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.Encoding.dll",
+      "sha256": "DCC9B161CF56A2BB2BFAF847D81DEF41C4EB417FA96A5C79F984747849BB8877",
+      "size": 93848,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.OpenSsl.dll",
+      "sha256": "E74084306323376BAB22B4F878B2C9FDC12C43ED06653B3F9C73DB56B3591145",
+      "size": 31872,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.Primitives.dll",
+      "sha256": "A65F2DC2405B377AA9AECDB3E892ADF3C8569CEB4452ADDC924C9B16045B0DA6",
+      "size": 134808,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Cryptography.X509Certificates.dll",
+      "sha256": "CFDA448A05D9971CB03AE3FBDC4979B5E5651FD30B63557A2C74112900F82041",
+      "size": 486552,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Principal.Windows.dll",
+      "sha256": "6E25D5295C42307EC2DF0BB2F141CECBDB7E3EA5DC35D063E9FE7FD514700F0B",
+      "size": 151704,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.Principal.dll",
+      "sha256": "2F1B9586D961C3EB0159271013BE873DFEEC4589C0674262EBE229EE06985A42",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.SecureString.dll",
+      "sha256": "D70F379E07A8A54647EF157558B60DE50EF6B4B0AD4ABEE41AD9C633E3D8FA6C",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Security.dll",
+      "sha256": "519F5338EA24E512A1D71FD96D18BACB85128FA094BA813317BB331B658BEC2D",
+      "size": 18560,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ServiceModel.Web.dll",
+      "sha256": "EE7335CF0974CBEA6D78768C524D5E7ACCD706CD99146F98727A457D207BD637",
+      "size": 17536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ServiceProcess.dll",
+      "sha256": "0E2E25D61F605DB206C1FB57C2011564599D6B4750BDCC9D44719F81223F25D3",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.Encoding.CodePages.dll",
+      "sha256": "AC1E98B77CEC783C34593A42BBBC4B97BF46CE738AED4933B804EF917BF3066C",
+      "size": 871056,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.Encoding.Extensions.dll",
+      "sha256": "6CCAF501DC6E4B578FA8DB6E8EFDC549D405A63042FF916093BD8F84E8277032",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.Encoding.dll",
+      "sha256": "09CC4FFEC8AC09328C3C03964DFEA531E8F5536CEF566CFF51FB7DA50F885E7C",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.Encodings.Web.dll",
+      "sha256": "276DFD56C6573B8E1F418C78043DC6606D986C66A1B78CF882C8D9AA7C51864E",
+      "size": 131224,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.Json.dll",
+      "sha256": "B1F14F11DD6F2BDF15705FAE316A945C9B97C5CE5DA67C29BF998353287B76DF",
+      "size": 1483928,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Text.RegularExpressions.dll",
+      "sha256": "581EE84E5CA9E283BF1B61B94C495732153B5FBEC98A51FC5D35C9865604ED0C",
+      "size": 529560,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Channels.dll",
+      "sha256": "52472CD978C808EBC3FD079F935CBC646B02C9EAB41B175F68CA4E136037748E",
+      "size": 125080,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Overlapped.dll",
+      "sha256": "2385CA2D4D7DF73888EB7B943402EE90D68B0CC99D03A02C760B1C23A49F40C6",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Tasks.Dataflow.dll",
+      "sha256": "7C9EC6A8D77F2A2E8AA1F146DD75C4E1F3DFEB9D7033F9F95FFF84864FE2B73B",
+      "size": 505496,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Tasks.Extensions.dll",
+      "sha256": "7F292C1E8845374D4D27650E96BADF3E080C6B5CEF0A7EE37B7217509F6B732B",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Tasks.Parallel.dll",
+      "sha256": "83B2C4B665B58F993D4ABE80F0D26A9322F12B40F7D5F696392EFB637FB3A3FB",
+      "size": 138904,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Tasks.dll",
+      "sha256": "476884F230B4ACB4BA86F24C8105C3076A5C30CCE6B11275ACCF80C4E400A98F",
+      "size": 17024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Thread.dll",
+      "sha256": "F11E17A820CCC7B084692C68411E1FFB6F506645D7994A956CCBD796ABBB873F",
+      "size": 16024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.ThreadPool.dll",
+      "sha256": "718D35D92F5C055823D44599B0C049273FCD9D922EB46326B120A8D708FD6978",
+      "size": 16016,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.Timer.dll",
+      "sha256": "32C4D5F583E36E0835D9898514615C43E58BFCF7AF7301644F49A17D18B6AC46",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Threading.dll",
+      "sha256": "9ED389096339C7FD65A1B11B624AA72E939E23651D86BFC6A81227DB7AC91AB0",
+      "size": 80024,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Transactions.Local.dll",
+      "sha256": "A12BA56A76034DEC5A5D4013556D49AE5F4FFAFBA9C78C08A9FEC808AA26BD30",
+      "size": 351384,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Transactions.dll",
+      "sha256": "BA6DEF1337EC434309B6A28A5653291F0CC9D411FC0DE73C0783D3199C1FC24B",
+      "size": 17048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.ValueTuple.dll",
+      "sha256": "05F443AE382EFFFB5DA640D55C7C334243B559DE26349DA1D6A0B40CE1C11F30",
+      "size": 15488,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Web.HttpUtility.dll",
+      "sha256": "8DBE2A8D794F0AF632C49A8E9929CFEDCC68EC4ABF661A39B656974DA9FB7C2C",
+      "size": 52880,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Web.dll",
+      "sha256": "25B81B487B5B474E269CB4A7AEB75AEBA0CB2FF9E72B2923E4BC0B8FB01AF526",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Windows.dll",
+      "sha256": "07AE7C534940C94625C7C8CD86E9EADC6FCE3D750D308554EDB4E24BF4587D93",
+      "size": 16536,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.Linq.dll",
+      "sha256": "A5EE9219F397CB0DE7940C872C0F40E54D04A1DADE86E9322559009DC48FCB88",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.ReaderWriter.dll",
+      "sha256": "2F5D5B42B268F17A68657535CFBA174B350A39C0D70B8556DE67AAAA6AAA828B",
+      "size": 22144,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.Serialization.dll",
+      "sha256": "C61362868EAAEE5D22D2DA10502FD751A0799647EA4A6C83FB1E4D994757B7B7",
+      "size": 16512,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.XDocument.dll",
+      "sha256": "F9A5602336E6F819F2E502670075B93AC9061B92DA7F43CAA6FC5AD8F3CD9395",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.XPath.XDocument.dll",
+      "sha256": "B763654D251F0E7B32330DDCAC46DFF190D4EB784BB750BEA7651B7C7132ABE5",
+      "size": 18072,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.XPath.dll",
+      "sha256": "D4E78592333A130250E9FEC15D1FEA2A768B9C0FD25A7ADED3EC428AA1692F8F",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.XmlDocument.dll",
+      "sha256": "EA510537BDDC1F5B5F85B41D94300B4189D13F5605FAAD1A5BFECB04C9C45A38",
+      "size": 16000,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.XmlSerializer.dll",
+      "sha256": "D060142ED17394F97E4536E06D466A39FCF2BFA85C0280E8997605489854D782",
+      "size": 18048,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.Xml.dll",
+      "sha256": "57AF41B86E30D8EBAC3BE05C9D063E5371D62DE703E10AAF5A187908FF8AE6C7",
+      "size": 24728,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/System.dll",
+      "sha256": "9FB95A87AD50D6B0CAE05D9108382915144068034FBBD9F7F733C01DCC0CCFDB",
+      "size": 50840,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/WindowsBase.dll",
+      "sha256": "B3E6DF643DD07A3BDDE2B6419DA7E7EE49C2C01BDCE7C758C9ABC20B8B8A6296",
+      "size": 17032,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/clretwrc.dll",
+      "sha256": "825E796BA50A5656B80AEFD3B53E44585F0CAA33C46AC115BAB0E09A67501354",
+      "size": 304768,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/clrjit.dll",
+      "sha256": "6521495C6C1D0EB29402FA4A79667036D56BBFD902DAA4E7F3FC89A1C079EA54",
+      "size": 1436288,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/coreclr.dll",
+      "sha256": "04377968C540F704AAE92ECB0EC9BBFD5FDDFE226DFCA30AA3EEB52006A44FD8",
+      "size": 5123200,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/dbgshim.dll",
+      "sha256": "8BA04CA88CDBB7ACEB134C12BD67ABD7FB2864C4008495F8224A084B9BA74C93",
+      "size": 140416,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/hostpolicy.dll",
+      "sha256": "3EEE1BF88ACDAC74AEDEA15EB4BA2C4410D2082184266CD929C1310462115095",
+      "size": 392320,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/mscordaccore.dll",
+      "sha256": "DD2DA6E841155C8869A68270D951246CBFE67943BB71082121FC5EA3D5439661",
+      "size": 1321888,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/mscordaccore_amd64_amd64_6.0.722.32202.dll",
+      "sha256": "0CECEE158F8B762C8A3610A91CA099ABF7FB834984803EC7D4E0BAE09CCEC173",
+      "size": 1321880,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/mscordbi.dll",
+      "sha256": "ACAB4F32FB8CE65F535B2096C4556962DD271D40000FE688F19A04BDE93A2080",
+      "size": 1269400,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/mscorlib.dll",
+      "sha256": "17D4B3D640A611585C6BAC2DADD22F76A68A667AE0CC90C446EDE02EDEFB506D",
+      "size": 58496,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/mscorrc.dll",
+      "sha256": "587FB8810E8DED0BD1B33C4A8281EA2F288C58C1DD62AFCB33F30433F04B124E",
+      "size": 147072,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/msquic.dll",
+      "sha256": "4101DCF2EDC42417FDC3F7DB048442BA0B0A05D376CAFA3ED6C85E1DC6B3B9F6",
+      "size": 499584,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "dotnet/netstandard.dll",
+      "sha256": "2666C3D2972E95B2306CFAB72DFF26704CE89F1A25B55BA05DAEFAC2F7654575",
+      "size": 101504,
+      "component": "DotNetRuntime"
+    },
+    {
+      "path": "winhttp.dll",
+      "sha256": "8C6CDBC38836DEE87E3368F5DE1994D7C0CCEBF29E4CE7ABA3C0981F9375412C",
+      "size": 26112,
+      "component": "UnityDoorstop"
+    }
+  ],
+  "files": [
+    {
+      "path": "AsmResolver/LICENSE.md",
+      "sha256": "1C967BB945D9E86F79E49DDA29E834D49FF3CB203C9A98878E7661B3DE7A5559",
+      "size": 1108
+    },
+    {
+      "path": "AsmResolver/provenance.json",
+      "sha256": "1BB2CF7C71F30F1B0615DE0C69EA1B1254365B9607837345E2B6E11C3F3644DB",
+      "size": 522
+    },
+    {
+      "path": "AssetRipper.CIL/LICENSE",
+      "sha256": "039CD624A13919C3AF1AEC3CE2217C3F50D6E3053F6E9EF64D9CF37E12812A76",
+      "size": 1062
+    },
+    {
+      "path": "AssetRipper.CIL/provenance.json",
+      "sha256": "73E2281DD5879636337BD09E17195539BCFA6C4DD6FE66CA670CCAD22463F76A",
+      "size": 529
+    },
+    {
+      "path": "AssetRipper.Primitives/License.md",
+      "sha256": "DAE6148FF7AD3331A6380A2CE0CBB87F71B8F177891ABA1661B1D3A6FE52D5DE",
+      "size": 1062
+    },
+    {
+      "path": "AssetRipper.Primitives/Licenses/uTinyRipper.md",
+      "sha256": "4BCFD56E4CF313D10CC6A0A3A4A9862076A40B430BB51EFE9E9C827FF5C94FFE",
+      "size": 1063
+    },
+    {
+      "path": "AssetRipper.Primitives/provenance.json",
+      "sha256": "8CCBD8A47875721F701EB01711C11389D4B598E8321A3162AB282A39F756DC41",
+      "size": 906
+    },
+    {
+      "path": "BepInEx/LICENSE",
+      "sha256": "F2CECA48AF033D8ADF337A8F9453E633CFAD10A1F8C9FEC2E5AE55A2D8FFE952",
+      "size": 25338
+    },
+    {
+      "path": "BepInEx/provenance.json",
+      "sha256": "32C459E85F9B0F79C8A76AD66B2E255BF8FF2F52A033A103A2C46427D3E7BFD4",
+      "size": 1233
+    },
+    {
+      "path": "Cpp2IL/LICENSE",
+      "sha256": "1A80D1B99E958385045DA1E383A105895D1C997EF2B36448430DBFE3763FE670",
+      "size": 1066
+    },
+    {
+      "path": "Cpp2IL/provenance.json",
+      "sha256": "8E7DED19006FA68030BCAFAECEC4F8AFD62E0EFDA8C4945DADD11F1B69BA0723",
+      "size": 515
+    },
+    {
+      "path": "Disarm/LICENSE",
+      "sha256": "DFE5EF7511938E4D23B12C80F38E966A7993AEE60744AB72A947BED7B24963B8",
+      "size": 1066
+    },
+    {
+      "path": "Disarm/provenance.json",
+      "sha256": "3694C822BD34714E8555A3C6E1B3DB379CC76A7BAD1D549D59120402D1A6CD71",
+      "size": 508
+    },
+    {
+      "path": "DotNetRuntime/LICENSE.TXT",
+      "sha256": "CFC21F5E8BD655AE997EEC916138B707B1D290B83272C02A95C9F821B8C87310",
+      "size": 1116
+    },
+    {
+      "path": "DotNetRuntime/PATENTS.TXT",
+      "sha256": "E6304A188C9580D4B254186A7A8B1240DA60C872DD90FB8FEAC0F3C687162CED",
+      "size": 2584
+    },
+    {
+      "path": "DotNetRuntime/provenance.json",
+      "sha256": "7DA1425634AEDC5B665AE95407EB7BDC7F3873A4BF988A61C1A4E80B2BFF181A",
+      "size": 1937
+    },
+    {
+      "path": "DotNetRuntime/THIRD-PARTY-NOTICES.TXT",
+      "sha256": "737C973BF6998979F3059C8CB94A8A81DD07305222328A351BFEEC3BEA956E3B",
+      "size": 61615
+    },
+    {
+      "path": "DotNetRuntime/UPSTREAM-6.0.7-THIRD-PARTY-NOTICES.TXT",
+      "sha256": "55FF71C32F96483C2F4E061EB78EE9BF3D8D562D00143C67B361BB4CE989FE44",
+      "size": 46771
+    },
+    {
+      "path": "Iced/LICENSE.txt",
+      "sha256": "93A47598376FD3F276B631E75149340087153C6FF1635A53C5790249E9124E2D",
+      "size": 1114
+    },
+    {
+      "path": "Iced/provenance.json",
+      "sha256": "643C905A60255D979DBD190E39FF75287204A859D43E1D27AC9315B7D018ABF5",
+      "size": 488
+    },
+    {
+      "path": "InteropAndDetours/Capstone-Native-Runtimes-LICENSE.txt",
+      "sha256": "65E9ED46A59976EDA8F5BD1EA79A680DEA38DD299C760BC9A8D87A764EF5029B",
+      "size": 1687
+    },
+    {
+      "path": "InteropAndDetours/Capstone.NET-LICENSE-MIT.txt",
+      "sha256": "79463FA3B9FACDA0F90E33EDA09FF57C6C4D5620BA8B01E5C48A68834E20DE4E",
+      "size": 1062
+    },
+    {
+      "path": "InteropAndDetours/Capstone.NET-source-b90e380c14e857865c94a355954236e678bd557c.zip",
+      "sha256": "A2AB40B30D0FDFF4B50E4CCD01143BB5FE41FA82BBE62EE555CDAFD34A2AAB70",
+      "size": 7684365
+    },
+    {
+      "path": "InteropAndDetours/COMPONENTS.json",
+      "sha256": "2638B3C36DF8F8D0C3D983949DA75AC70AA63CC7EC1E869B3B16FF9C9872287B",
+      "size": 10508
+    },
+    {
+      "path": "InteropAndDetours/CORRESPONDING-SOURCE.txt",
+      "sha256": "0B8056722D1CD1525E3A5B7E0564E7D134D2E2BE355A49E6459E1F03B3DF3495",
+      "size": 3609
+    },
+    {
+      "path": "InteropAndDetours/Dobby-LICENSE-Apache-2.0.txt",
+      "sha256": "43070E2D4E532684DE521B885F385D0841030EFA2B1A20BAFB76133A5E1379C1",
+      "size": 11356
+    },
+    {
+      "path": "InteropAndDetours/Dobby-source-888d971214900374edbca6206fad6ded8a2c1311.zip",
+      "sha256": "00C0A582FC69EFD52AA3A95449D27882384B653EB0E6524B79E796E8A8EF807D",
+      "size": 768106
+    },
+    {
+      "path": "InteropAndDetours/Downloaded-assets.json",
+      "sha256": "3F4FA59C2D8B0D81F09781A8647DEB73B814F23A837F451051195AC114AE1DE3",
+      "size": 4951
+    },
+    {
+      "path": "InteropAndDetours/HarmonyX-LICENSE-MIT.txt",
+      "sha256": "7E54AB4766EF78637A05FB3454663A66DE6BB960DBD4C7088890ED76B0844F36",
+      "size": 1063
+    },
+    {
+      "path": "InteropAndDetours/HarmonyX-source-97b2a2e9cecd6d0c757da4dbb696abaff9163faa.zip",
+      "sha256": "9F2887B63D3FC8366078D36AC772AC399DC9A6571F977E2EF03161E64A7CB09D",
+      "size": 1781488
+    },
+    {
+      "path": "InteropAndDetours/HarmonyX-Upstream-Harmony-LICENSE-MIT.txt",
+      "sha256": "27E65B8ADEEDD73C2F76088346EFA3756A00E4E88CCA5ACE0C196CE1733EF570",
+      "size": 1072
+    },
+    {
+      "path": "InteropAndDetours/Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt",
+      "sha256": "5EECCE16E59E24DDD9D3712012517A033F2CD0459ACE22B43D5659D4624ABFF0",
+      "size": 42802
+    },
+    {
+      "path": "InteropAndDetours/Il2CppInterop-source-6d9007c18cc8440830379c5e1d5714085e7ec577.zip",
+      "sha256": "CC2144DE9CE503704EEBBE65987DFE19D905F66A9CED262A510698F18CBC605D",
+      "size": 943575
+    },
+    {
+      "path": "InteropAndDetours/MonoMod-2022-LICENSE-MIT.txt",
+      "sha256": "0B64833222E3C6A426AD29362D26334619FE02EAF2B89EA9C37805521896C920",
+      "size": 1080
+    },
+    {
+      "path": "InteropAndDetours/MonoMod-2024-LICENSE-MIT.txt",
+      "sha256": "0B64833222E3C6A426AD29362D26334619FE02EAF2B89EA9C37805521896C920",
+      "size": 1080
+    },
+    {
+      "path": "InteropAndDetours/MonoMod-Embedded-Iced-LICENSE-MIT.txt",
+      "sha256": "93A47598376FD3F276B631E75149340087153C6FF1635A53C5790249E9124E2D",
+      "size": 1114
+    },
+    {
+      "path": "InteropAndDetours/MonoMod-source-8fea48428622be858dd4f48b20ba1bf96ba09894.zip",
+      "sha256": "57F9DAB09F220D1F87E1C7ACD452FD1386F63A02F470998214299DDEC52BC743",
+      "size": 252832
+    },
+    {
+      "path": "InteropAndDetours/MonoMod-source-a1b82852b2574742776af08818487b90b0bfab93.zip",
+      "sha256": "0E4C1F6E3337F1B1B8EDEE5223E044D9EDC18B9C69C9BA9A952AFE454D55D509",
+      "size": 1209301
+    },
+    {
+      "path": "InteropAndDetours/MonoMod.Common-LICENSE-MIT.txt",
+      "sha256": "206FFEC502564C3BD09BE6C6370C817963AE69BEF8E8F0CF208D19BD94CE28BD",
+      "size": 1080
+    },
+    {
+      "path": "InteropAndDetours/MonoMod.Common-source-d679ae74d002e513bd88e52091b66283d8537d83.zip",
+      "sha256": "95BA4DF2A4AFF540211E61C25D64C8962264B98CF49BA745BF75F1715A089736",
+      "size": 139113
+    },
+    {
+      "path": "InteropAndDetours/NOTICES.txt",
+      "sha256": "A7639BCC51BE70C68FD1DB861FC5945E87363F8704DD1C5094E8AAF808009DC5",
+      "size": 3751
+    },
+    {
+      "path": "Mono.Cecil/LICENSE.txt",
+      "sha256": "13D58ECBED676511C0C4C4009BFF107025E50007FF5E7901DC562700EC62509E",
+      "size": 1098
+    },
+    {
+      "path": "Mono.Cecil/provenance.json",
+      "sha256": "E716C8E3C32C210F7345266E8B8609D73EB3F242D93158504700DBEB73D2DBCB",
+      "size": 500
+    },
+    {
+      "path": "README.txt",
+      "sha256": "7268AA11FE2B35D58C69DA40EA1D44B50EE64F936652CE0C9C8959BAA1E156C8",
+      "size": 2142
+    },
+    {
+      "path": "SemanticVersioning/LICENSE",
+      "sha256": "26A00BAD0D14CA2FC93C10398D477FA9609D6FD36068867DE53384218C1F64A3",
+      "size": 1054
+    },
+    {
+      "path": "SemanticVersioning/provenance.json",
+      "sha256": "22B3A198F7BD4A0E4CE7273724AEE86F993221CD1B8B55CC6819BF591C6C1FD5",
+      "size": 521
+    },
+    {
+      "path": "Sources/BepInEx-3fab71a1914132a1ce3a545caf3192da603f2258-Source.zip",
+      "sha256": "12781A0A4564E99F8B31F290C28199CE30F81AA2A236991A4A7DF4111AC0D45C",
+      "size": 258432
+    },
+    {
+      "path": "Sources/UnityDoorstop-33dab9a6733862eb81869ff08431d9478b28784b-Source.zip",
+      "sha256": "A71789FFCB359F6A37C6D2C7BBDD0527231E9DB00BF46637693CFF88BA7FFB80",
+      "size": 114921
+    },
+    {
+      "path": "UnityDoorstop/LICENSE",
+      "sha256": "20C17D8B8C48A600800DFD14F95D5CB9FF47066A9641DDEAB48DC54AEC96E331",
+      "size": 26526
+    },
+    {
+      "path": "UnityDoorstop/provenance.json",
+      "sha256": "839B37A532B6C2E1055CF2E4A8BF7576EA1EDFBD7D366E42D77A565F0E24EAFC",
+      "size": 1262
+    }
+  ]
+}

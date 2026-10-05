@@ -2,21 +2,33 @@
 
 An Among Us mod menu by **Rifegul**.
 
-## Download
+Windows PC edition for **Microsoft Store / Epic Games / Xbox App**.
+For Among Us **19.0.0 / 2026.9.29** on Windows 10/11, 64-bit.
 
-**[Download the all-in-one installer](downloads/setup/MalumMenuEnhancedSetup.exe?raw=true)**
+## Installation
 
-1. Close Among Us.
-2. Open the downloaded file and click **Install**.
-3. Open Among Us normally. Press **Delete** to open the menu.
+Choose one of these two ways. Both downloads are also on the [download page](https://github.com/ProXgram/MalumMenuEnhanced/releases/tag/v1.0).
 
-The installer finds your game and downloads everything it needs. If it cannot
-find Among Us, click **Browse** and select `Among Us.exe`. Your settings are
-preserved, and the previous menu is backed up.
+### All-in-one installer — Microsoft Store / Xbox App
 
-Windows 10/11, 64-bit. For Among Us **2026.9.29**. Automatic installation supports
-**Xbox App / Microsoft Store only**. Epic Games needs the untested manual
-installation path. Steam is not supported by this installer.
+**[Download the installer](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0/MalumMenuEnhancedSetup.exe)**
+
+Close Among Us, open the downloaded file and click **Install**. The installer
+finds your game and downloads what it needs. If needed, click **Browse** and
+select `Among Us.exe`.
+
+### Manual ZIP — Microsoft Store / Epic Games / Xbox App
+
+**[Download the complete manual ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0/MalumMenuEnhanced-1.0-MicrosoftStore-EpicGames-XboxApp.zip)**
+
+1. Download the ZIP and close Among Us.
+2. Open your game folder using [these short steps](docs/INSTALL.md#find-your-game-folder).
+3. Extract the ZIP and copy **everything inside it** directly beside `Among Us.exe`.
+4. Open Among Us normally. Wait for the first launch to finish, then press **Delete**.
+
+The ZIP includes the mod and its loader. Xbox / Microsoft Store has been tested;
+Epic Games uses the same manual package but has not yet been tested. This edition
+is for PC, not Xbox consoles. Steam is not supported.
 
 ## Screenshots
 

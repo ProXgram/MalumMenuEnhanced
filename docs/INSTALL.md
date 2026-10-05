@@ -1,57 +1,51 @@
-# Installation help
+# Install MalumMenu Enhanced
 
-## Easy installation
+For **Microsoft Store / Epic Games / Xbox App on Windows PC**.
+Use Among Us **19.0.0 / 2026.9.29**, Windows 10/11, 64-bit.
 
-Download [MalumMenuEnhancedSetup.exe](../downloads/setup/MalumMenuEnhancedSetup.exe?raw=true).
-Close Among Us, open the file and click **Install**. Then launch Among Us from
-your usual game launcher and press **Delete**.
+## Option 1: All-in-one installer
 
-The installer runs without a separate .NET download. It needs an internet
-connection and downloads the compatible loader directly from the official
-BepInEx site. It installs the verified version 1.0 plugin from this repository.
+For **Microsoft Store / Xbox App**.
 
-## Finding your game
+1. [Download the installer](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0/MalumMenuEnhancedSetup.exe).
+2. Close Among Us. Open the downloaded file and click **Install**.
+3. Open Among Us normally and press **Delete**.
 
-If automatic detection misses your game, click **Browse** in the installer and
-select `Among Us.exe`.
+The installer finds your game and downloads the required files. If it cannot
+find the game, click **Browse** and select `Among Us.exe`. It keeps your settings
+and backs up the previous menu. No separate .NET download is needed.
 
-- **Xbox App:** Among Us → Manage → Files → Browse. Open the `Content` folder.
+## Option 2: Manual ZIP
 
-Choose the editable game folder exposed by your launcher. The installer does
-not change Windows permissions or write into the protected WindowsApps folder.
+The same ZIP is for **Microsoft Store / Epic Games / Xbox App**.
 
-## Supported version
+1. [Download the complete ZIP](https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.0/MalumMenuEnhanced-1.0-MicrosoftStore-EpicGames-XboxApp.zip).
+2. Close Among Us and open your game folder using the steps below.
+3. Extract the ZIP. Copy **all the files and folders inside it** into the folder containing `Among Us.exe`.
+4. Open Among Us from your usual launcher. The first launch takes longer while the mod prepares its files. When it finishes, press **Delete**.
 
-This edition is for Among Us **2026.9.29** on 64-bit Windows 10/11. The tested
-Xbox package version is **2026.9.293.0**. Automatic installation supports
-**Xbox App / Microsoft Store only**. Epic Games requires the manual path below,
-which has not been tested. The installer does not support Steam or guess
-compatibility with newer game versions.
+Copy `BepInEx`, `dotnet` and the loose files directly beside `Among Us.exe`.
+Do not copy just the outer ZIP folder. The ZIP already includes the loader;
+there is no separate loader download.
 
-## Updates and backups
+## Find your game folder
 
-Your settings and unrelated plugins are preserved. Previous menu DLLs are
-backed up outside the active plugins folder before replacement. Cancelled or
-failed installations restore any files changed during that attempt.
+| Your PC launcher | Open this folder |
+| --- | --- |
+| Microsoft Store / Xbox App | Open **Xbox App** → **Among Us** → **Manage** → **Files** → **Browse** → **Content**. |
+| Epic Games | **Library** → **Among Us** → **Manage** → **Installation** → click the **folder icon**. |
 
-The installer does not download the game or purchased cosmetics. Among Us must
-already be installed.
+If you bought the game through Microsoft Store, use its **Xbox App** entry to
+browse the game files. Choose the editable game folder; these instructions do
+not require changing Windows permissions.
 
-## Manual installation
+## Replacing another menu
 
-For Epic Games, find the game folder through Among Us → Manage → Installation
-→ folder icon. This manual installation path is untested.
+Before copying the new files, back up old `MalumMenu.dll`, `HaddadMenu.dll` or
+`MalumMenuEnhanced.dll` outside `BepInEx/plugins`. Keep only one menu DLL active.
 
-1. Close Among Us.
-2. If BepInEx is not installed, download the **BepInEx 6 Unity.IL2CPP-win-x64**
-   loader from the [official downloads](https://builds.bepinex.dev/projects/bepinex_be).
-   Follow the [official IL2CPP guide](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html).
-3. Download the [plugin ZIP](../downloads/v1.0/MalumMenuEnhanced-1.0-Plugin.zip).
-   Extract it into the game folder, placing `MalumMenuEnhanced.dll` in
-   `BepInEx/plugins`.
-4. Back up old `MalumMenu.dll`, `HaddadMenu.dll` or `MalumMenuEnhanced.dll` copies
-   outside `BepInEx/plugins`. Keep one active menu DLL.
-5. Launch Among Us normally and press **Delete**.
+The Xbox / Microsoft Store build has been tested. Epic Games uses the same
+manual package but has not yet been tested. This is a PC mod; Xbox consoles and
+Steam are not supported by this package.
 
-The corresponding [source archive](../downloads/v1.0/MalumMenuEnhanced-1.0-Source.zip)
-and [credits](../CREDITS.md) are available separately.
+[Download page](https://github.com/ProXgram/MalumMenuEnhanced/releases/tag/v1.0) · [Source](../downloads/v1.0/MalumMenuEnhanced-1.0-Source.zip) · [Credits](../CREDITS.md)

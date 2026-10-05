@@ -44,3 +44,14 @@ through **Credits & licenses**. The authoritative bundled runtime notices and
 their provenance are under `MalumMenuEnhanced.Setup/Legal`.
 
 Game compatibility and beginner instructions are in [installation help](../docs/INSTALL.md).
+
+## Complete manual ZIP
+
+The manual package includes the verified BepInEx loader and the version 1.0
+plugin. It uses one extraction layout for Microsoft Store / Epic Games / Xbox
+App on PC. Xbox / Microsoft Store is tested; Epic Games is not yet tested.
+
+Run `python scripts/package-manual.py` to package the pinned archives with the
+bundled dependency notices. Its source inputs, checksums and licenses are
+documented under `ManualLegal`. Then run `python scripts/package-setup.py` to
+update the corresponding source archive.

@@ -1,0 +1,239 @@
+{
+  "SchemaVersion": 1,
+  "LoaderArchive": {
+    "BepInExCommit": "3fab71a1914132a1ce3a545caf3192da603f2258",
+    "Url": "https://builds.bepinex.dev/projects/bepinex_be/755/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755%2B3fab71a.zip",
+    "SHA256": "3616D6A67F5F595973EC4AA7BD7EDAF7F799D5BB9926F7146A6DCC7B4ABF478F"
+  },
+  "Components": {
+    "MonoModAuxiliary": {
+      "Source": "MonoMod-source-a1b82852b2574742776af08818487b90b0bfab93.zip",
+      "Repository": "https://github.com/MonoMod/MonoMod",
+      "Basis": "Official NuGet repository commits for Backports 1.1.2 and ILHelpers 1.1.0; binary hashes match net6.0 assets.",
+      "Commit": "a1b82852b2574742776af08818487b90b0bfab93",
+      "License": "MIT",
+      "LicenseFiles": [
+        "MonoMod-2024-LICENSE-MIT.txt",
+        "MonoMod-Embedded-Iced-LICENSE-MIT.txt"
+      ]
+    },
+    "Il2CppInterop": {
+      "Source": "Il2CppInterop-source-6d9007c18cc8440830379c5e1d5714085e7ec577.zip",
+      "Repository": "https://github.com/BepInEx/Il2CppInterop",
+      "Basis": "Full commit from all four binary informational versions; upstream Directory.Build.props license expression.",
+      "Commit": "6d9007c18cc8440830379c5e1d5714085e7ec577",
+      "License": "LGPL-3.0-only",
+      "LicenseFiles": [
+        "Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt"
+      ]
+    },
+    "MonoModLegacy": {
+      "Source": "MonoMod-source-8fea48428622be858dd4f48b20ba1bf96ba09894.zip",
+      "Repository": "https://github.com/MonoMod/MonoMod",
+      "LicenseFiles": [
+        "MonoMod-2022-LICENSE-MIT.txt",
+        "MonoMod.Common-LICENSE-MIT.txt"
+      ],
+      "Basis": "Upstream version tag; both binary hashes match official NuGet net5.0 assets for version 22.7.31.1.",
+      "Commit": "8fea48428622be858dd4f48b20ba1bf96ba09894",
+      "License": "MIT",
+      "Tag": "v22.07.31.01"
+    },
+    "Dobby": {
+      "Source": "Dobby-source-888d971214900374edbca6206fad6ded8a2c1311.zip",
+      "Repository": "https://github.com/BepInEx/Dobby",
+      "LicenseFiles": [
+        "Dobby-LICENSE-Apache-2.0.txt"
+      ],
+      "Basis": "Exact BepInEx 755 build pins Dobby 1.0.5; loader binary hash matches official v1.0.5 dobby-win.zip/dobby_x64.dll.",
+      "Commit": "888d971214900374edbca6206fad6ded8a2c1311",
+      "License": "Apache-2.0",
+      "Tag": "v1.0.5"
+    },
+    "HarmonyX": {
+      "Source": "HarmonyX-source-97b2a2e9cecd6d0c757da4dbb696abaff9163faa.zip",
+      "Repository": "https://github.com/BepInEx/HarmonyX",
+      "LicenseFiles": [
+        "HarmonyX-LICENSE-MIT.txt",
+        "HarmonyX-Upstream-Harmony-LICENSE-MIT.txt"
+      ],
+      "Basis": "Upstream version tag; binary hash matches official HarmonyX 2.10.2 NuGet netstandard2.0 asset.",
+      "Commit": "97b2a2e9cecd6d0c757da4dbb696abaff9163faa",
+      "License": "MIT",
+      "Tag": "v2.10.2"
+    },
+    "CapstoneBinding": {
+      "Source": "Capstone.NET-source-b90e380c14e857865c94a355954236e678bd557c.zip",
+      "Repository": "https://github.com/ds5678/Capstone.NET",
+      "Basis": "Full source commit and repository URL from binary metadata. Source archive also contains upstream native Capstone runtimes and their BSD notice.",
+      "Commit": "b90e380c14e857865c94a355954236e678bd557c",
+      "License": "MIT",
+      "LicenseFiles": [
+        "Capstone.NET-LICENSE-MIT.txt",
+        "Capstone-Native-Runtimes-LICENSE.txt"
+      ]
+    }
+  },
+  "Binaries": [
+    {
+      "Path": "BepInEx/core/MonoMod.Backports.dll",
+      "Size": 29184,
+      "SHA256": "CDD6E9F7BCDB98D2C002F63BFBE85AE80EA36261190A741E64283D769A6C6502",
+      "AssemblyVersion": "1.1.2.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "MonoMod.Backports",
+        "AssemblyInformationalVersionAttribute": "1.1.2+a1b82852b",
+        "AssemblyFileVersionAttribute": "1.1.2.0",
+        "AssemblyCopyrightAttribute": "Copyright 2024 0x0ade, DaNike",
+        "AssemblyCompanyAttribute": "0x0ade, DaNike"
+      },
+      "Component": "MonoModAuxiliary",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/Gee.External.Capstone.dll",
+      "Size": 295936,
+      "SHA256": "18F9CFBFD10B479143A46B3E417CCFCE4A62D4C2770DA9ED12D553A0B326302C",
+      "AssemblyVersion": "2.3.2.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "Gee.External.Capstone",
+        "AssemblyInformationalVersionAttribute": "2.3.2+b90e380c14e857865c94a355954236e678bd557c",
+        "AssemblyFileVersionAttribute": "2.3.2.0",
+        "AssemblyCopyrightAttribute": "Copyright (c) Ahmed Garhy",
+        "AssemblyCompanyAttribute": "Ahmed Garhy (@9ee1)"
+      },
+      "Component": "CapstoneBinding",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/Il2CppInterop.Runtime.dll",
+      "Size": 284160,
+      "SHA256": "302F0B4A229266D8747A2B7C9EA4BA16E15DD6ECABCF0D575C6F0487EC8DA82E",
+      "AssemblyVersion": "1.5.1.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "Il2CppInterop.Runtime",
+        "AssemblyInformationalVersionAttribute": "1.5.1-ci.829+6d9007c18cc8440830379c5e1d5714085e7ec577",
+        "AssemblyFileVersionAttribute": "1.5.1.0",
+        "AssemblyCompanyAttribute": "knah, BepInEx et al."
+      },
+      "Component": "Il2CppInterop",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/MonoMod.Utils.dll",
+      "Size": 193024,
+      "SHA256": "72A5B4249985873D7ECB160CBBED7A1E6540A38EE7618C72C64B9CB068C1438A",
+      "AssemblyVersion": "22.7.31.1",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "MonoMod.Utils",
+        "AssemblyInformationalVersionAttribute": "22.07.31.01",
+        "AssemblyFileVersionAttribute": "22.7.31.1",
+        "AssemblyCopyrightAttribute": "Copyright 2022 0x0ade",
+        "AssemblyCompanyAttribute": "0x0ade"
+      },
+      "Component": "MonoModLegacy",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/MonoMod.ILHelpers.dll",
+      "Size": 4096,
+      "SHA256": "0081403BDCEF3340F78C7CCDED0BE6AE0507B397EE8B9980B44F01BF9F93AED1",
+      "AssemblyVersion": "1.1.0.0",
+      "AssemblyAttributes": {
+        "AssemblyInformationalVersionAttribute": "1.1.0",
+        "AssemblyFileVersionAttribute": "1.1.0.0",
+        "AssemblyCopyrightAttribute": "Copyright 2024 0x0ade, DaNike",
+        "AssemblyCompanyAttribute": "0x0ade, DaNike"
+      },
+      "Component": "MonoModAuxiliary",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/MonoMod.RuntimeDetour.dll",
+      "Size": 112640,
+      "SHA256": "1B3D55F53CB9F9F2550DAED4DFD300B247D71698A0ACE82BC7B9FF38D563594F",
+      "AssemblyVersion": "22.7.31.1",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "MonoMod.RuntimeDetour",
+        "AssemblyInformationalVersionAttribute": "22.07.31.01",
+        "AssemblyFileVersionAttribute": "22.7.31.1",
+        "AssemblyCopyrightAttribute": "Copyright 2022 0x0ade",
+        "AssemblyCompanyAttribute": "0x0ade"
+      },
+      "Component": "MonoModLegacy",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/dobby.dll",
+      "Size": 205312,
+      "SHA256": "8015DE7D867245A1095D13947A63763878E4CF5FD3D3089B63CC39200B055DED",
+      "AssemblyVersion": null,
+      "AssemblyAttributes": {},
+      "Component": "Dobby",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/Il2CppInterop.HarmonySupport.dll",
+      "Size": 26112,
+      "SHA256": "AC580929EFA69EA785E71E9405A7A10C41B920024A6DD1B84095ED917BD1C68A",
+      "AssemblyVersion": "1.5.1.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "Il2CppInterop.HarmonySupport",
+        "AssemblyInformationalVersionAttribute": "1.5.1-ci.829+6d9007c18cc8440830379c5e1d5714085e7ec577",
+        "AssemblyFileVersionAttribute": "1.5.1.0",
+        "AssemblyCompanyAttribute": "BepInEx"
+      },
+      "Component": "Il2CppInterop",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/Il2CppInterop.Common.dll",
+      "Size": 41472,
+      "SHA256": "7445F52B59C4141D8F627D93B021DE3D958D5EE1D18DC52236E0ED19E97A1DA8",
+      "AssemblyVersion": "1.5.1.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "Il2CppInterop.Common",
+        "AssemblyInformationalVersionAttribute": "1.5.1-ci.829+6d9007c18cc8440830379c5e1d5714085e7ec577",
+        "AssemblyFileVersionAttribute": "1.5.1.0",
+        "AssemblyCompanyAttribute": "BepInEx, knah et al."
+      },
+      "Component": "Il2CppInterop",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/0Harmony.dll",
+      "Size": 264192,
+      "SHA256": "6C898933B52149E8BCF6722305C7E4D94ADD47C9E53B364096F91721624C0877",
+      "AssemblyVersion": "2.10.2.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "HarmonyX",
+        "AssemblyInformationalVersionAttribute": "2.10.2",
+        "AssemblyFileVersionAttribute": "2.10.2.0",
+        "AssemblyCopyrightAttribute": "Copyright © BepInEx 2022",
+        "AssemblyCompanyAttribute": "BepInEx"
+      },
+      "Component": "HarmonyX",
+      "Modified": false
+    },
+    {
+      "Path": "BepInEx/core/Il2CppInterop.Generator.dll",
+      "Size": 219136,
+      "SHA256": "D0896363C83A599AE2F2C30E59198DD8133A45C9D6B8C3883D481B8F5B7E07A5",
+      "AssemblyVersion": "1.5.1.0",
+      "AssemblyAttributes": {
+        "AssemblyProductAttribute": "Il2CppInterop.Generator",
+        "AssemblyInformationalVersionAttribute": "1.5.1-ci.829+6d9007c18cc8440830379c5e1d5714085e7ec577",
+        "AssemblyFileVersionAttribute": "1.5.1.0",
+        "AssemblyCompanyAttribute": "knah, BepInEx et al."
+      },
+      "Component": "Il2CppInterop",
+      "Modified": false
+    }
+  ],
+  "SourceLimitations": [
+    "Source archives preserve upstream repositories at the identified revisions; they are not reproducible-build verification.",
+    "GitHub repository archives exclude Git submodule contents. Optional MonoMod source archives include .gitmodules and build controls; see CORRESPONDING-SOURCE.txt for recursive checkout instructions.",
+    "The LGPL Il2CppInterop archive has no Git submodules. Its project/build files pin external package dependencies; restore them using the upstream build controls.",
+    "Gee.External.Capstone managed binding is included in the loader. Native Capstone runtimes are present in its optional source archive; their complete bundled license is also copied separately."
+  ]
+}

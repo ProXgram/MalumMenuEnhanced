@@ -1,0 +1,74 @@
+Third-party interop and detour components
+
+The following unmodified components are included from the official BepInEx
+Unity IL2CPP x64 build 755 archive. Their binary versions and SHA-256 hashes,
+source revisions, source archives and license files are recorded in
+COMPONENTS.json. Downloaded-assets.json records the original URLs and checksums
+of the complete, unmodified license texts and upstream source archives.
+
+Il2CppInterop.Runtime, Common, Generator and HarmonySupport
+Version: 1.5.1-ci.829
+Source revision: 6d9007c18cc8440830379c5e1d5714085e7ec577
+Project: https://github.com/BepInEx/Il2CppInterop
+Authors: knah, BepInEx and contributors.
+License: LGPL-3.0-only, as specified by the upstream Directory.Build.props.
+Full LGPL v3 and incorporated GPL v3 text:
+  Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt
+Matching source and build controls are included in the Il2CppInterop source ZIP.
+See CORRESPONDING-SOURCE.txt for source and library replacement information.
+
+MonoMod.RuntimeDetour and MonoMod.Utils
+Version: 22.07.31.01 (assembly version 22.7.31.1)
+Source revision: 8fea48428622be858dd4f48b20ba1bf96ba09894
+Project: https://github.com/MonoMod/MonoMod
+Binary copyright: Copyright 2022 0x0ade.
+License: MIT; full text is in MonoMod-2022-LICENSE-MIT.txt.
+The companion MonoMod.Common submodule is from revision
+d679ae74d002e513bd88e52091b66283d8537d83. Its matching source ZIP and complete
+license are provided in MonoMod.Common-LICENSE-MIT.txt and the companion ZIP.
+
+MonoMod.Backports and MonoMod.ILHelpers
+Versions: Backports 1.1.2; ILHelpers 1.1.0.
+Source revision: a1b82852b2574742776af08818487b90b0bfab93
+Project: https://github.com/MonoMod/MonoMod
+Binary copyright: Copyright 2024 0x0ade, DaNike.
+License: MIT; full text is in MonoMod-2024-LICENSE-MIT.txt.
+The upstream source tree references iced revision
+425462f47e0752f143b4f3826b875d5c33b5baf1. Its complete MIT notice is provided in
+MonoMod-Embedded-Iced-LICENSE-MIT.txt. Git submodule contents are excluded from
+GitHub's repository ZIP; recursive checkout information is provided separately.
+
+HarmonyX (0Harmony.dll)
+Version: 2.10.2
+Source revision: 97b2a2e9cecd6d0c757da4dbb696abaff9163faa
+Project: https://github.com/BepInEx/HarmonyX
+Binary copyright: Copyright BepInEx 2022.
+Upstream license copyright: Copyright (c) 2020 BepInEx.
+Original Harmony copyright: Copyright (c) 2017 Andreas Pardeike.
+License: MIT. Both complete notices are provided in HarmonyX-LICENSE-MIT.txt
+and HarmonyX-Upstream-Harmony-LICENSE-MIT.txt.
+
+Gee.External.Capstone (.NET binding)
+Version: 2.3.2
+Source revision: b90e380c14e857865c94a355954236e678bd557c
+Project: https://github.com/ds5678/Capstone.NET
+Copyright (c) Ahmed Garhy.
+License: MIT; full text is in Capstone.NET-LICENSE-MIT.txt.
+The optional upstream source ZIP also contains native Capstone runtimes with
+their own license. That complete notice is preserved inside the ZIP and copied
+verbatim to Capstone-Native-Runtimes-LICENSE.txt. Native Capstone is designed and
+implemented by Nguyen Anh Quynh; the bundled notice states Copyright (c) 2013,
+COSEINC. These native runtimes are not additional files in the loader archive.
+
+Dobby (dobby.dll)
+Version: BepInEx/Dobby v1.0.5, Windows x64.
+Source revision: 888d971214900374edbca6206fad6ded8a2c1311
+Project: https://github.com/BepInEx/Dobby
+Original project: https://github.com/jmpews/Dobby
+License: Apache-2.0; full text is in Dobby-LICENSE-Apache-2.0.txt.
+The loader DLL matches the official v1.0.5 release's dobby_x64.dll exactly.
+The matching source archive preserves upstream source notices and credits.
+
+These components remain subject to their own licenses. Their inclusion does
+not imply endorsement by their authors. This notice adds no restrictions to
+rights granted by the licenses.

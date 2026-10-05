@@ -1,0 +1,28 @@
+{
+  "component": "BepInEx",
+  "version": "6.0.0-be.755+3fab71a1914132a1ce3a545caf3192da603f2258",
+  "repository": "https://github.com/BepInEx/BepInEx",
+  "source_ref": "3fab71a1914132a1ce3a545caf3192da603f2258",
+  "license": "LGPL-2.1",
+  "assets": [
+    {
+      "path": "BepInEx/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/BepInEx/BepInEx/3fab71a1914132a1ce3a545caf3192da603f2258/LICENSE",
+      "sha256": "F2CECA48AF033D8ADF337A8F9453E633CFAD10A1F8C9FEC2E5AE55A2D8FFE952",
+      "size": 25338
+    },
+    {
+      "path": "Sources/BepInEx-3fab71a1914132a1ce3a545caf3192da603f2258-Source.zip",
+      "source_url": "https://codeload.github.com/BepInEx/BepInEx/zip/3fab71a1914132a1ce3a545caf3192da603f2258",
+      "sha256": "12781A0A4564E99F8B31F290C28199CE30F81AA2A236991A4A7DF4111AC0D45C",
+      "size": 258432,
+      "entries": 209
+    }
+  ],
+  "license_note": "Exact project metadata declares LGPL-2.1-only; the preserved LICENSE includes an LGPL2.1-or-later notice. LGPL2.1 terms and complete exact source are included without altering either upstream notice.",
+  "build_dependency_versions": {
+    "UnityDoorstop": "4.5.0",
+    "Dobby": "1.0.5",
+    "DotNetRuntime": "6.0.7"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "component": "DotNetRuntime",
+  "version": "6.0.7",
+  "repository": "https://github.com/BepInEx/dotnet-runtime",
+  "source_ref": "e10df436edd020835a630a40796ba48222acb1d5",
+  "license": "MIT and bundled third-party terms",
+  "assets": [
+    {
+      "path": "DotNetRuntime/LICENSE.TXT",
+      "source_url": "https://raw.githubusercontent.com/BepInEx/dotnet-runtime/e10df436edd020835a630a40796ba48222acb1d5/LICENSE.TXT",
+      "sha256": "CFC21F5E8BD655AE997EEC916138B707B1D290B83272C02A95C9F821B8C87310",
+      "size": 1116
+    },
+    {
+      "path": "DotNetRuntime/THIRD-PARTY-NOTICES.TXT",
+      "source_url": "https://raw.githubusercontent.com/BepInEx/dotnet-runtime/e10df436edd020835a630a40796ba48222acb1d5/THIRD-PARTY-NOTICES.TXT",
+      "sha256": "737C973BF6998979F3059C8CB94A8A81DD07305222328A351BFEEC3BEA956E3B",
+      "size": 61615
+    },
+    {
+      "path": "DotNetRuntime/PATENTS.TXT",
+      "source_url": "https://raw.githubusercontent.com/BepInEx/dotnet-runtime/e10df436edd020835a630a40796ba48222acb1d5/PATENTS.TXT",
+      "sha256": "E6304A188C9580D4B254186A7A8B1240DA60C872DD90FB8FEAC0F3C687162CED",
+      "size": 2584
+    },
+    {
+      "path": "DotNetRuntime/UPSTREAM-6.0.7-THIRD-PARTY-NOTICES.TXT",
+      "source_url": "https://raw.githubusercontent.com/dotnet/runtime/v6.0.7/THIRD-PARTY-NOTICES.TXT",
+      "sha256": "55FF71C32F96483C2F4E061EB78EE9BF3D8D562D00143C67B361BB4CE989FE44",
+      "size": 46771
+    }
+  ],
+  "runtime_origin_note": "BepInEx build755 downloads the mini-coreclr-Release.zip asset from BepInEx/dotnet-runtime release6.0.7. That release states it is based on official .NET6.0.7; both the release-tag fork notices and official upstream6.0.7 notices are preserved. This does not claim the fork tag reproduces every supplied runtime binary.",
+  "binary_download_url": "https://github.com/BepInEx/dotnet-runtime/releases/download/6.0.7/mini-coreclr-Release.zip"
+}

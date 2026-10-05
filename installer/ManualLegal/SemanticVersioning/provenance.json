@@ -1,0 +1,15 @@
+{
+  "component": "SemanticVersioning",
+  "version": "2.0.2",
+  "repository": "https://github.com/adamreeve/semver.net",
+  "source_ref": "c52c9d4c5d34a6a3bb6ff45f7276d8b6e951a42d",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "SemanticVersioning/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/adamreeve/semver.net/c52c9d4c5d34a6a3bb6ff45f7276d8b6e951a42d/LICENSE",
+      "sha256": "26A00BAD0D14CA2FC93C10398D477FA9609D6FD36068867DE53384218C1F64A3",
+      "size": 1054
+    }
+  ]
+}

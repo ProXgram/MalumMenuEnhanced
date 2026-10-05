@@ -1,0 +1,104 @@
+[
+  {
+    "File": "Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt",
+    "Url": "https://raw.githubusercontent.com/BepInEx/Il2CppInterop/6d9007c18cc8440830379c5e1d5714085e7ec577/LICENSE",
+    "Length": 42802,
+    "SHA256": "5EECCE16E59E24DDD9D3712012517A033F2CD0459ACE22B43D5659D4624ABFF0"
+  },
+  {
+    "File": "Il2CppInterop-source-6d9007c18cc8440830379c5e1d5714085e7ec577.zip",
+    "Url": "https://codeload.github.com/BepInEx/Il2CppInterop/zip/6d9007c18cc8440830379c5e1d5714085e7ec577",
+    "Length": 943575,
+    "SHA256": "CC2144DE9CE503704EEBBE65987DFE19D905F66A9CED262A510698F18CBC605D"
+  },
+  {
+    "File": "MonoMod-2022-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/MonoMod/MonoMod/8fea48428622be858dd4f48b20ba1bf96ba09894/LICENSE",
+    "Length": 1080,
+    "SHA256": "0B64833222E3C6A426AD29362D26334619FE02EAF2B89EA9C37805521896C920"
+  },
+  {
+    "File": "MonoMod-source-8fea48428622be858dd4f48b20ba1bf96ba09894.zip",
+    "Url": "https://codeload.github.com/MonoMod/MonoMod/zip/8fea48428622be858dd4f48b20ba1bf96ba09894",
+    "Length": 252832,
+    "SHA256": "57F9DAB09F220D1F87E1C7ACD452FD1386F63A02F470998214299DDEC52BC743"
+  },
+  {
+    "File": "MonoMod-2024-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/MonoMod/MonoMod/a1b82852b2574742776af08818487b90b0bfab93/LICENSE",
+    "Length": 1080,
+    "SHA256": "0B64833222E3C6A426AD29362D26334619FE02EAF2B89EA9C37805521896C920"
+  },
+  {
+    "File": "MonoMod-source-a1b82852b2574742776af08818487b90b0bfab93.zip",
+    "Url": "https://codeload.github.com/MonoMod/MonoMod/zip/a1b82852b2574742776af08818487b90b0bfab93",
+    "Length": 1209301,
+    "SHA256": "0E4C1F6E3337F1B1B8EDEE5223E044D9EDC18B9C69C9BA9A952AFE454D55D509"
+  },
+  {
+    "File": "HarmonyX-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/BepInEx/HarmonyX/97b2a2e9cecd6d0c757da4dbb696abaff9163faa/LICENSE",
+    "Length": 1063,
+    "SHA256": "7E54AB4766EF78637A05FB3454663A66DE6BB960DBD4C7088890ED76B0844F36"
+  },
+  {
+    "File": "HarmonyX-Upstream-Harmony-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/BepInEx/HarmonyX/97b2a2e9cecd6d0c757da4dbb696abaff9163faa/LICENSE.Harmony",
+    "Length": 1072,
+    "SHA256": "27E65B8ADEEDD73C2F76088346EFA3756A00E4E88CCA5ACE0C196CE1733EF570"
+  },
+  {
+    "File": "HarmonyX-source-97b2a2e9cecd6d0c757da4dbb696abaff9163faa.zip",
+    "Url": "https://codeload.github.com/BepInEx/HarmonyX/zip/97b2a2e9cecd6d0c757da4dbb696abaff9163faa",
+    "Length": 1781488,
+    "SHA256": "9F2887B63D3FC8366078D36AC772AC399DC9A6571F977E2EF03161E64A7CB09D"
+  },
+  {
+    "File": "Capstone.NET-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/ds5678/Capstone.NET/b90e380c14e857865c94a355954236e678bd557c/LICENSE",
+    "Length": 1062,
+    "SHA256": "79463FA3B9FACDA0F90E33EDA09FF57C6C4D5620BA8B01E5C48A68834E20DE4E"
+  },
+  {
+    "File": "Capstone.NET-source-b90e380c14e857865c94a355954236e678bd557c.zip",
+    "Url": "https://codeload.github.com/ds5678/Capstone.NET/zip/b90e380c14e857865c94a355954236e678bd557c",
+    "Length": 7684365,
+    "SHA256": "A2AB40B30D0FDFF4B50E4CCD01143BB5FE41FA82BBE62EE555CDAFD34A2AAB70"
+  },
+  {
+    "File": "Dobby-LICENSE-Apache-2.0.txt",
+    "Url": "https://raw.githubusercontent.com/BepInEx/Dobby/888d971214900374edbca6206fad6ded8a2c1311/LICENSE",
+    "Length": 11356,
+    "SHA256": "43070E2D4E532684DE521B885F385D0841030EFA2B1A20BAFB76133A5E1379C1"
+  },
+  {
+    "File": "Dobby-source-888d971214900374edbca6206fad6ded8a2c1311.zip",
+    "Url": "https://codeload.github.com/BepInEx/Dobby/zip/888d971214900374edbca6206fad6ded8a2c1311",
+    "Length": 768106,
+    "SHA256": "00C0A582FC69EFD52AA3A95449D27882384B653EB0E6524B79E796E8A8EF807D"
+  },
+  {
+    "File": "Capstone-Native-Runtimes-LICENSE.txt",
+    "Url": "https://raw.githubusercontent.com/ds5678/Capstone.NET/b90e380c14e857865c94a355954236e678bd557c/Gee.External.Capstone/runtimes/LICENSE.TXT",
+    "Length": 1687,
+    "SHA256": "65E9ED46A59976EDA8F5BD1EA79A680DEA38DD299C760BC9A8D87A764EF5029B"
+  },
+  {
+    "File": "MonoMod.Common-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/MonoMod/MonoMod.Common/d679ae74d002e513bd88e52091b66283d8537d83/LICENSE",
+    "Length": 1080,
+    "SHA256": "206FFEC502564C3BD09BE6C6370C817963AE69BEF8E8F0CF208D19BD94CE28BD"
+  },
+  {
+    "File": "MonoMod.Common-source-d679ae74d002e513bd88e52091b66283d8537d83.zip",
+    "Url": "https://codeload.github.com/MonoMod/MonoMod.Common/zip/d679ae74d002e513bd88e52091b66283d8537d83",
+    "Length": 139113,
+    "SHA256": "95BA4DF2A4AFF540211E61C25D64C8962264B98CF49BA745BF75F1715A089736"
+  },
+  {
+    "File": "MonoMod-Embedded-Iced-LICENSE-MIT.txt",
+    "Url": "https://raw.githubusercontent.com/icedland/iced/425462f47e0752f143b4f3826b875d5c33b5baf1/LICENSE.txt",
+    "Length": 1114,
+    "SHA256": "93A47598376FD3F276B631E75149340087153C6FF1635A53C5790249E9124E2D"
+  }
+]

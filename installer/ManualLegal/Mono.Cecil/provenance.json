@@ -1,0 +1,15 @@
+{
+  "component": "Mono.Cecil",
+  "version": "0.11.4",
+  "repository": "https://github.com/jbevain/cecil",
+  "source_ref": "04b44978799b4c5268955de2219cda45904aa397",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "Mono.Cecil/LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/jbevain/cecil/04b44978799b4c5268955de2219cda45904aa397/LICENSE.txt",
+      "sha256": "13D58ECBED676511C0C4C4009BFF107025E50007FF5E7901DC562700EC62509E",
+      "size": 1098
+    }
+  ]
+}

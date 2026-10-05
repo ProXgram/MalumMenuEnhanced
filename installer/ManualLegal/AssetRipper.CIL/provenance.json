@@ -1,0 +1,15 @@
+{
+  "component": "AssetRipper.CIL",
+  "version": "1.2.2",
+  "repository": "https://github.com/AssetRipper/AssetRipper.CIL",
+  "source_ref": "06216e69825ccd6536dc17e9ca81c4d539ce9321",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "AssetRipper.CIL/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/AssetRipper/AssetRipper.CIL/06216e69825ccd6536dc17e9ca81c4d539ce9321/LICENSE",
+      "sha256": "039CD624A13919C3AF1AEC3CE2217C3F50D6E3053F6E9EF64D9CF37E12812A76",
+      "size": 1062
+    }
+  ]
+}

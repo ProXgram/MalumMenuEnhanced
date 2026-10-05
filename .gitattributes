@@ -3,3 +3,4 @@
 
 # Preserve bundled third-party notices and their recorded checksums.
 installer/MalumMenuEnhanced.Setup/Legal/*.txt -text
+installer/ManualLegal/** -text

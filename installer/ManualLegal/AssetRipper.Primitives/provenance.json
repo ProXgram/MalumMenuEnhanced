@@ -1,0 +1,21 @@
+{
+  "component": "AssetRipper.Primitives",
+  "version": "3.2.0",
+  "repository": "https://github.com/AssetRipper/AssetRipper.Primitives",
+  "source_ref": "d759b3db98bf2a1cb8c2181faf5d405610aac585",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "AssetRipper.Primitives/License.md",
+      "source_url": "https://raw.githubusercontent.com/AssetRipper/AssetRipper.Primitives/d759b3db98bf2a1cb8c2181faf5d405610aac585/License.md",
+      "sha256": "DAE6148FF7AD3331A6380A2CE0CBB87F71B8F177891ABA1661B1D3A6FE52D5DE",
+      "size": 1062
+    },
+    {
+      "path": "AssetRipper.Primitives/Licenses/uTinyRipper.md",
+      "source_url": "https://raw.githubusercontent.com/AssetRipper/AssetRipper.Primitives/d759b3db98bf2a1cb8c2181faf5d405610aac585/Licenses/uTinyRipper.md",
+      "sha256": "4BCFD56E4CF313D10CC6A0A3A4A9862076A40B430BB51EFE9E9C827FF5C94FFE",
+      "size": 1063
+    }
+  ]
+}

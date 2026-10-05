@@ -1,0 +1,15 @@
+{
+  "component": "Cpp2IL",
+  "version": "2022.1.0-development.1452",
+  "repository": "https://github.com/SamboyCoding/Cpp2IL",
+  "source_ref": "558ddd98642010897d54316b51fbaa7889fda093",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "Cpp2IL/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/SamboyCoding/Cpp2IL/558ddd98642010897d54316b51fbaa7889fda093/LICENSE",
+      "sha256": "1A80D1B99E958385045DA1E383A105895D1C997EF2B36448430DBFE3763FE670",
+      "size": 1066
+    }
+  ]
+}

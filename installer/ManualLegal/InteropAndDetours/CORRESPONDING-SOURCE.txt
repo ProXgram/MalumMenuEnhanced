@@ -1,0 +1,67 @@
+Il2CppInterop source and replacement information
+
+This distribution uses Il2CppInterop Runtime, Common, Generator and
+HarmonySupport 1.5.1-ci.829. The four library DLLs are unmodified copies from
+the official BepInEx build 755 distribution. They are licensed LGPL-3.0-only.
+The full LGPL v3 and incorporated GPL v3 texts are provided in
+Il2CppInterop-LICENSE-LGPL3-and-GPL3.txt.
+
+The matching upstream source, project files, build controls, documentation,
+and included build references are supplied in:
+  Il2CppInterop-source-6d9007c18cc8440830379c5e1d5714085e7ec577.zip
+Source project:
+  https://github.com/BepInEx/Il2CppInterop
+Immutable source download:
+  https://codeload.github.com/BepInEx/Il2CppInterop/zip/6d9007c18cc8440830379c5e1d5714085e7ec577
+Revision:
+  6d9007c18cc8440830379c5e1d5714085e7ec577
+
+Extract this archive to inspect or modify the library. Follow its README,
+project files and upstream build workflow for the .NET SDK and NuGet package
+restore/build requirements. The source archive has no Git submodules.
+External package dependencies are pinned in the supplied project/build files;
+the build tools and package dependencies can be restored from their upstream
+locations. No independently reproduced binary build is claimed here.
+
+The libraries remain separate DLLs under BepInEx/core. With the game closed,
+users may replace them with interface-compatible modified versions. Preserve
+the originals for restoration if needed. The distributed component hashes
+identify the supplied originals; they impose no runtime lock against modified
+libraries. This distribution adds no restriction on modification or reverse
+engineering for debugging modifications to these libraries.
+
+When redistributing these library binaries, retain their notices, complete
+license texts, and matching corresponding source. A bare project-homepage link
+is not the corresponding-source material provided by this package. If the
+libraries are changed, provide the changed source and identify the changes
+under the applicable license. LGPL section 4 describes the additional
+conditions for combined works, including use of a suitable shared-library
+mechanism or provision of material suitable for relinking.
+
+Other source archives
+
+The MonoMod, HarmonyX, Capstone.NET and Dobby source archives are exact upstream
+repository snapshots at the revisions listed in COMPONENTS.json. They preserve
+the upstream files and notices; optional source snapshots are not claims of
+self-contained or independently reproducible builds. Their licenses and
+copyright notices remain applicable to all included files.
+
+GitHub source ZIPs do not populate Git submodules. The older MonoMod snapshot
+references MonoMod.Common d679ae74d002e513bd88e52091b66283d8537d83; that matching
+source ZIP is supplied separately. The newer MonoMod snapshot references iced
+425462f47e0752f143b4f3826b875d5c33b5baf1; its complete MIT notice is included.
+For a complete optional MonoMod checkout, clone the upstream repository,
+checkout the exact desired revision, then run:
+  git submodule update --init --recursive
+Upstream repositories:
+  https://github.com/MonoMod/MonoMod
+  https://github.com/MonoMod/MonoMod.Common
+  https://github.com/icedland/iced
+
+The optional Capstone.NET repository snapshot includes its upstream native
+runtime files and their complete license notice. The notice is also supplied
+separately as Capstone-Native-Runtimes-LICENSE.txt.
+
+Checksums and original download URLs for every source and license asset are
+provided in Downloaded-assets.json. All upstream source and license assets
+in this folder are preserved verbatim.

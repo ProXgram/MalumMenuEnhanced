@@ -1,0 +1,15 @@
+{
+  "component": "AsmResolver",
+  "version": "6.0.0-beta.5",
+  "repository": "https://github.com/Washi1337/AsmResolver",
+  "source_ref": "124e161a9bc0ebb83b4d97276ae3da3c9cfe2fc5",
+  "license": "MIT",
+  "assets": [
+    {
+      "path": "AsmResolver/LICENSE.md",
+      "source_url": "https://raw.githubusercontent.com/Washi1337/AsmResolver/124e161a9bc0ebb83b4d97276ae3da3c9cfe2fc5/LICENSE.md",
+      "sha256": "1C967BB945D9E86F79E49DDA29E834D49FF3CB203C9A98878E7661B3DE7A5559",
+      "size": 1108
+    }
+  ]
+}
