@@ -16,7 +16,6 @@ If automatic detection misses your game, click **Browse** in the installer and
 select `Among Us.exe`.
 
 - **Xbox App:** Among Us → Manage → Files → Browse. Open the `Content` folder.
-- **Epic Games:** Among Us → Manage → Installation → folder icon.
 
 Choose the editable game folder exposed by your launcher. The installer does
 not change Windows permissions or write into the protected WindowsApps folder.
@@ -24,9 +23,10 @@ not change Windows permissions or write into the protected WindowsApps folder.
 ## Supported version
 
 This edition is for Among Us **2026.9.29** on 64-bit Windows 10/11. The tested
-Xbox package version is **2026.9.293.0**. Epic Games installation has not been
-tested. The installer does not support Steam or guess compatibility with newer
-game versions.
+Xbox package version is **2026.9.293.0**. Automatic installation supports
+**Xbox App / Microsoft Store only**. Epic Games requires the manual path below,
+which has not been tested. The installer does not support Steam or guess
+compatibility with newer game versions.
 
 ## Updates and backups
 
@@ -38,6 +38,9 @@ The installer does not download the game or purchased cosmetics. Among Us must
 already be installed.
 
 ## Manual installation
+
+For Epic Games, find the game folder through Among Us → Manage → Installation
+→ folder icon. This manual installation path is untested.
 
 1. Close Among Us.
 2. If BepInEx is not installed, download the **BepInEx 6 Unity.IL2CPP-win-x64**

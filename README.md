@@ -14,8 +14,9 @@ The installer finds your game and downloads everything it needs. If it cannot
 find Among Us, click **Browse** and select `Among Us.exe`. Your settings are
 preserved, and the previous menu is backed up.
 
-Windows 10/11, 64-bit. For Among Us **2026.9.29**. Xbox App / Microsoft Store;
-Epic Games support has not been tested. Steam is not supported by this installer.
+Windows 10/11, 64-bit. For Among Us **2026.9.29**. Automatic installation supports
+**Xbox App / Microsoft Store only**. Epic Games needs the untested manual
+installation path. Steam is not supported by this installer.
 
 ## Screenshots
 

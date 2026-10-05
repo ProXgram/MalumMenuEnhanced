@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve bundled third-party notices and their recorded checksums.
+installer/MalumMenuEnhanced.Setup/Legal/*.txt -text
