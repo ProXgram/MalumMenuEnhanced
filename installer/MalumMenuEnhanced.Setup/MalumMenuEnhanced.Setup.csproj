@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>MalumMenuEnhancedSetup</AssemblyName>
+    <Product>MalumMenu Enhanced Setup</Product>
+    <Title>MalumMenu Enhanced Setup</Title>
+    <Company>Rifegul</Company>
+    <Authors>Rifegul</Authors>
+    <Version>1.0.0</Version>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <DebugType>none</DebugType>
+    <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/../..'))=/_/MalumMenuEnhanced</PathMap>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../MalumMenuEnhanced.Setup.Core/MalumMenuEnhanced.Setup.Core.csproj" />
+    <EmbeddedResource Include="../../LICENSE" LogicalName="Legal.GPL-3.0.txt" />
+    <EmbeddedResource Include="../../CREDITS.md" LogicalName="Legal.Credits.txt" />
+    <EmbeddedResource Include="Legal/*.txt" />
+  </ItemGroup>
+</Project>

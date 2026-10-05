@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>MalumMenuEnhanced.Setup.Core</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>Rifegul</Authors>
+    <Company>Rifegul</Company>
+    <DebugType>none</DebugType>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <PathMap>$(MSBuildProjectDirectory)=/_/MalumMenuEnhanced/installer/Core</PathMap>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Setup.Core.Tests" />
+  </ItemGroup>
+</Project>

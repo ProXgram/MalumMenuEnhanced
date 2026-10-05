@@ -1,0 +1,62 @@
+MalumMenu Enhanced Setup — runtime notice provenance
+
+Target: self-contained .NET 10 Windows x64 (WinForms).
+Runtime version: 10.0.11.
+SDK used to resolve these runtime packs: 10.0.400.
+Both runtime package version files identify build commit e2f47b0110ed922f21a1522da67279133ce28f32.
+Legal texts are preserved without edits. Runtime-pack texts are byte-identical to their included package entries.
+The WindowsDesktop runtime package includes its MIT LICENSE but no THIRD-PARTY-NOTICES file; the matching WinForms and WPF release-tag notices are provided separately.
+The setup program and mod use the repository root GPL-3.0 LICENSE, embedded separately by the setup project.
+
+Runtime package provenance:
+microsoft.netcore.app.runtime.win-x64 10.0.11
+URL: https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.win-x64/10.0.11/microsoft.netcore.app.runtime.win-x64.10.0.11.nupkg
+SHA512 (base64): jn6vM2lHbEEf/xxpMmvj6D71MqL8D7SdiBa+II1BUH8Np0MZav1HkaLfOGgfhAGuQRCYtetlLwsStivRDhPy9w==
+
+microsoft.windowsdesktop.app.runtime.win-x64 10.0.11
+URL: https://api.nuget.org/v3-flatcontainer/microsoft.windowsdesktop.app.runtime.win-x64/10.0.11/microsoft.windowsdesktop.app.runtime.win-x64.10.0.11.nupkg
+SHA512 (base64): SM5DNtvgXORf68mVIJGX3IgjXT6yAsgawfsCDpfOQ/VXbyIXnI6zqkmRqHqcVgLbMfMhmhg/amnrGJ8WO9UC+A==
+
+Notice files:
+DOTNET-RUNTIME-LICENSE.txt
+Source: https://github.com/dotnet/runtime/blob/v10.0.11/LICENSE.TXT
+Included LICENSE.TXT entry from microsoft.netcore.app.runtime.win-x64/10.0.11.
+Bytes: 1139
+SHA256: d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b
+
+DOTNET-RUNTIME-THIRD-PARTY-NOTICES.txt
+Source: https://github.com/dotnet/runtime/blob/v10.0.11/THIRD-PARTY-NOTICES.TXT
+Included THIRD-PARTY-NOTICES.TXT entry from microsoft.netcore.app.runtime.win-x64/10.0.11.
+Bytes: 78041
+SHA256: 6d15e10a101c6bfff2ab4429ed061bf76c456fc4b23ad6b03e0d0f8377148a21
+
+WINDOWS-DESKTOP-LICENSE.txt
+Source: https://github.com/dotnet/dotnet/tree/e2f47b0110ed922f21a1522da67279133ce28f32
+Included LICENSE entry from microsoft.windowsdesktop.app.runtime.win-x64/10.0.11.
+Bytes: 1137
+SHA256: a89886665765362eb77e0f8e26602c924520041d1711b2eedc136434fe4d01ab
+
+WINFORMS-LICENSE.txt
+Source: https://raw.githubusercontent.com/dotnet/winforms/v10.0.11/LICENSE.TXT
+Unmodified official source text from release tag v10.0.11.
+Bytes: 1115
+SHA256: ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b
+
+WINFORMS-THIRD-PARTY-NOTICES.txt
+Source: https://raw.githubusercontent.com/dotnet/winforms/v10.0.11/THIRD-PARTY-NOTICES.TXT
+Unmodified official source text from release tag v10.0.11.
+Bytes: 1966
+SHA256: 5a412b38efae0b162dc0893b319023f4cd14a8985a0f9f9ae01ac052b37a36eb
+
+WPF-LICENSE.txt
+Source: https://raw.githubusercontent.com/dotnet/wpf/v10.0.11/LICENSE.TXT
+Unmodified official source text from release tag v10.0.11.
+Bytes: 1115
+SHA256: ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b
+
+WPF-THIRD-PARTY-NOTICES.txt
+Source: https://raw.githubusercontent.com/dotnet/wpf/v10.0.11/THIRD-PARTY-NOTICES.TXT
+Unmodified official source text from release tag v10.0.11.
+Bytes: 2703
+SHA256: d23dba2fee20c6b59d8f7088ee9ed372459c952a319b7ca90f3eec370cc76eb9
+
