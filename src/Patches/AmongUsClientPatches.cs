@@ -1,0 +1,86 @@
+using HarmonyLib;
+
+namespace MalumMenu;
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.Update))]
+public static class AmongUsClient_Update
+{
+    public static void Postfix()
+    {
+        MalumSpoof.SpoofLevel();
+        AlwaysImpostorHandler.TickFreeplay();
+        LocalImpostorHandler.Tick();
+        AutomaticTasksHandler.Tick();
+        InfiniteJudgeHandler.Tick();
+
+        // GuestMode cheats are commented out as they are broken in latest updates
+
+        // Code to treat temp accounts the same as full accounts, including access to friend codes
+        // if (!EOSManager.Instance.loginFlowFinished || !MalumMenu.guestMode.Value) return;
+        // DataManager.Player.Account.LoginStatus = EOSManager.AccountLoginStatus.LoggedIn;
+
+        // if (!string.IsNullOrWhiteSpace(EOSManager.Instance.FriendCode)) return;
+        // var friendCode = MalumSpoof.spoofFriendCode();
+        // var editUsername = EOSManager.Instance.editAccountUsername;
+        // editUsername.UsernameText.SetText(friendCode);
+        // editUsername.SaveUsername();
+        // EOSManager.Instance.FriendCode = friendCode;
+    }
+}
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameJoined))]
+public static class AmongUsClient_OnGameJoined
+{
+    // Postfix patch of AmongUsClient.OnGameJoined to store the last joined game ID string
+    public static string lastGameIdString = "";
+
+    public static void Postfix(string gameIdString)
+    {
+        lastGameIdString = gameIdString;
+        ColorCycleHandler.Stop();
+        MovementAutomation.Reset();
+        SprintHandler.Reset();
+        LocalImpostorHandler.Reset();
+        AlwaysImpostorHandler.ResetFreeplayAttempt();
+        CheatToggles.automaticTasks = false;
+        AutomaticTasksHandler.Reset();
+        InfiniteJudgeHandler.Reset();
+#if GUEST_KILL_EXPERIMENT
+        GuestRoundTest.Reset();
+#endif
+    }
+}
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGame))]
+public static class AmongUsClient_CoStartGame
+{
+    public static void Postfix()
+    {
+        // Clear lobby/session carryover before the new round's intro starts.
+        CheatToggles.automaticTasks = false;
+        AutomaticTasksHandler.Reset();
+        if (CheatToggles.logGameState)
+            ConsoleUI.Log("Game started");
+    }
+}
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
+public static class AmongUsClient_OnGameEnd
+{
+    public static void Postfix(EndGameResult endGameResult)
+    {
+        ColorCycleHandler.Stop();
+        MovementAutomation.Reset();
+        SprintHandler.Reset();
+        LocalImpostorHandler.Reset();
+        AlwaysImpostorHandler.ResetFreeplayAttempt();
+        CheatToggles.automaticTasks = false;
+        AutomaticTasksHandler.Reset();
+        InfiniteJudgeHandler.Reset();
+#if GUEST_KILL_EXPERIMENT
+        GuestRoundTest.Reset();
+#endif
+        if (CheatToggles.logGameState)
+            ConsoleUI.Log($"Game ended with reason {endGameResult.GameOverReason}");
+    }
+}

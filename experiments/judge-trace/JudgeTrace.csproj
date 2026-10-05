@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <DebugType>embedded</DebugType>
+    <AssemblyName>JudgeTrace</AssemblyName>
+    <Version>0.1.0</Version>
+    <Description>Passive local Judge lifecycle diagnostics for Among Us 19.0.0.</Description>
+    <OutputPath>../../artifacts/experiments/judge-trace/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="metadata-check/**/*.cs" />
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.735" Private="false" ExcludeAssets="runtime;native" />
+    <PackageReference Include="AmongUs.GameLibs.Steam" Version="2026.9.29" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.1.0-rc.1" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+</Project>

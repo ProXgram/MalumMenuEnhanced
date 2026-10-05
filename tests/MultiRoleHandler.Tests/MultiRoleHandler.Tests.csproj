@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Cheats/MultiRoleHandler.cs" Link="MultiRoleHandler.cs" />
+    <Compile Include="../../src/Cheats/MultiRoleDetectiveHandler.cs" Link="MultiRoleDetectiveHandler.cs" />
+    <Compile Include="../../src/Patches/MultiRoleDetectivePatches.cs" Link="MultiRoleDetectivePatches.cs" />
+  </ItemGroup>
+</Project>

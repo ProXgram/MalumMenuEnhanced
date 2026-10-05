@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Cheats/LocalImpostorHandler.cs" Link="LocalImpostorHandler.cs" />
+    <Compile Include="../../src/Patches/LocalImpostorKillPatches.cs" Link="LocalImpostorKillPatches.cs" />
+  </ItemGroup>
+</Project>
