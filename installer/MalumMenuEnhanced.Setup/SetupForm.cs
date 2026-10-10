@@ -30,7 +30,7 @@ internal sealed class SetupForm : Form
         new DownloadArtifact(new Uri("https://builds.bepinex.dev/projects/bepinex_be/755/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.755%2B3fab71a.zip"),
             "3616D6A67F5F595973EC4AA7BD7EDAF7F799D5BB9926F7146A6DCC7B4ABF478F", "BepInEx loader"),
         new DownloadArtifact(new Uri("https://github.com/ProXgram/MalumMenuEnhanced/releases/download/v1.1.0/MalumMenuEnhanced-1.1.0-Plugin.zip"),
-            "FE21E267091344AFB6AFFD6ECCD4E26785440E9F52708643FC6AAE3ADDEB99AE", "MalumMenu Enhanced"))
+            "2C287790DF58B911305C9A1ED4E84E18EED31160A3DA0F94AF49651457FFF071", "MalumMenu Enhanced"))
         { ExpectedPluginVersion = new Version(1, 1, 0, 0) };
 
     public SetupForm()

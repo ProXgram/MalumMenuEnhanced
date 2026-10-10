@@ -108,7 +108,7 @@ public partial class MalumMenu : BasePlugin
                                 "SprintMultiplier",
                                 2f,
                                 new ConfigDescription("Sprint multiplies your chosen movement speed while the key is held.",
-                                    new AcceptableValueRange<float>(1f, 4f)));
+                                    new AcceptableValueRange<float>(1f, SprintHandler.MaximumMultiplier)));
 
         stuntMultiplier = Config.Bind("MalumMenu.Movement",
                                 "StuntMultiplier",

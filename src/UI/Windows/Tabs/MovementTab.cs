@@ -55,7 +55,7 @@ public class MovementTab : ITab
             MalumMenu.sprintKeybind.Value = keys[(index + 1) % keys.Length];
         }
         var multiplier = Mathf.Round(GUILayout.HorizontalSlider(MalumMenu.sprintMultiplier.Value,
-            1f, 4f, GUILayout.Width(250f)) * 10f) / 10f;
+            1f, SprintHandler.MaximumMultiplier, GUILayout.Width(250f)) * 10f) / 10f;
         if (!Mathf.Approximately(multiplier, MalumMenu.sprintMultiplier.Value))
             MalumMenu.sprintMultiplier.Value = multiplier;
         GUILayout.Label($"Sprint boost: {multiplier:0.0}x");

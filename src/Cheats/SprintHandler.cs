@@ -5,6 +5,9 @@ namespace MalumMenu;
 
 public static class SprintHandler
 {
+    public const float MaximumMultiplier = 8f;
+    public const float MaximumSpeed = 40f;
+
     private static PlayerPhysics _physics;
     private static IntPtr _playerPointer;
     private static IntPtr _shipPointer;
@@ -78,10 +81,10 @@ public static class SprintHandler
 
             var multiplier = MalumMenu.sprintMultiplier.Value;
             if (float.IsNaN(multiplier) || float.IsInfinity(multiplier)) multiplier = 2f;
-            multiplier = Mathf.Clamp(multiplier, 1f, 4f);
+            multiplier = Mathf.Clamp(multiplier, 1f, MaximumMultiplier);
             // Always multiply the captured speed, never the previously boosted value.
-            // Preserve the sign used by Invert Controls and the existing speed range.
-            physics.Speed = Mathf.Clamp(_baseSpeed * multiplier, -20f, 20f);
+            // Preserve the sign used by Invert Controls within the sprint speed limit.
+            physics.Speed = Mathf.Clamp(_baseSpeed * multiplier, -MaximumSpeed, MaximumSpeed);
             _statusText = $"Sprint active: {Mathf.Abs(physics.Speed):0.##} speed";
         }
         catch (Exception exception)

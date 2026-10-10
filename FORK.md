@@ -256,9 +256,9 @@ has not been verified. No nickname is changed automatically during installation.
 Version **3.3.8-au19** adds **Delete → Movement → Hold to Sprint**, enabled by
 default. Close the menu and hold **Left Shift** while moving for a **2×** boost.
 Releasing the key restores the exact captured speed, including inverted controls.
-The Movement tab changes the hold key and multiplier (1–4×). Settings are stored
+The Movement tab changes the hold key and multiplier (1–8×). Settings are stored
 in the existing config under `MalumMenu.Movement`; the enabled toggle uses the
-existing profile system. Final speed uses the existing maximum magnitude of 20,
+existing profile system. The faster sprint raises its maximum speed magnitude to 40,
 so high base speeds may receive less than the selected multiplier.
 
 Version **3.3.9-au19** also allows lobby movement while waiting for the host;

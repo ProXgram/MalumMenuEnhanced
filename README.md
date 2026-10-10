@@ -49,7 +49,7 @@ mod cannot start, run the latest installer. Epic Games uses manual updates.
 ## Features
 
 - Multi Role: vent access, tracking, Vitals and Detective tools.
-- Sprint, follow, orbit, teleport and Lag Mode.
+- Sprint up to 8×, follow, orbit, teleport and Lag Mode.
 - Manual task automation and AI Tasks.
 - Appearance controls and random outfits.
 - Separate host controls, including Ghost Voting.
